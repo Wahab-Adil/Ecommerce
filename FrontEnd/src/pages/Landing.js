@@ -1,6 +1,10 @@
-import React from "react";
+import { Typography } from "@mui/material";
 
 const Landing = () => {
-  return <>This is the Landing Page</>;
+  return (
+    <>
+      <Typography variant='h3' color='primary.main'>This is Landing Page With Primary Color</Typography>
+    </>
+  );
 };
 export default Landing;
