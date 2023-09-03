@@ -17,7 +17,7 @@ export default function Router() {
     // pages
     {
       path: "/",
-      children: [{ path: PATH_PAGE.landingPage, element: <Landing /> }],
+      children: [{ path: PATH_PAGE.landingPage,exact:true, element: <Landing /> }],
     },
   ]);
 }

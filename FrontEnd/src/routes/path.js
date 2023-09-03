@@ -6,5 +6,5 @@ const PATH_ROOT = "/";
 
 // Root Pages
 export const PATH_PAGE = {
-  landingPage: path(PATH_ROOT, "landing"),
+  landingPage: path(PATH_ROOT,''),
 };
