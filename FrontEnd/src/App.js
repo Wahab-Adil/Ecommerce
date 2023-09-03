@@ -21,7 +21,7 @@ function App() {
         </a>
       </div>
       <p style={{ color: theme.palette.secondary.main }}>
-        Welcome Friends , Amazon Default ColorPalette
+        Welcome Friends , Default Setting.
       </p>
     </>
   );
