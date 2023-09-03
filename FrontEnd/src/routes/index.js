@@ -23,4 +23,4 @@ export default function Router() {
 }
 
 // MAIN
-const Landing = Loadable(lazy(() => import("../pages/Landing.jsx")));
+const Landing = Loadable(lazy(() => import("../pages/Landing.js")));
