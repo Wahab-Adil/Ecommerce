@@ -64,9 +64,9 @@ const GREY = {
 
 const palette = {
   common: { black: '#000', white: '#fff' },
-    grey:{main:"78798E"},
+    grey:{main:"#78798E"},
     text: { primary: '#000000'},
-    background: { main:'#D4DFF3' , paper: '#78798E' , },
+    background: { main:'#e3f2f1' , paper: '#f4ffff' , },
     action: {
       hover: GREY[500_8],
       selected: GREY[500_16],
