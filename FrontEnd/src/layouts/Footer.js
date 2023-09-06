@@ -7,6 +7,7 @@ import {
   Link,
   Divider,
   useTheme,
+
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 // Lottie
@@ -37,6 +38,7 @@ const RootStyle = styled(Box)(({ theme }) => ({
     bottom: 0,
     height: "130%",
   },
+
 }));
 const ContentStyle = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -57,6 +59,7 @@ const ContentStyle = styled(Box)(({ theme }) => ({
     flexDirection: "column",
     marginTop: "-6.5em",
   },
+
 }));
 const StyledBox = styled(Grid)(({ theme }) => ({
   backgrounColor: theme.palette.background.paper,
@@ -324,6 +327,7 @@ export default function Footer() {
                   }}
                 />
               ) : null}
+
             </StyledLink>
           </Box>
         </StyledBox>
