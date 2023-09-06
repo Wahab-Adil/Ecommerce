@@ -3,10 +3,11 @@ import {
   Box,
   Typography,
   styled,
-  Button,
   Grid,
   Link,
   Divider,
+  useTheme,
+
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 // Lottie
@@ -15,13 +16,29 @@ import animation from "../animations/user-profile.json";
 import animationSetter from "../animations/animationSetter";
 // Styles
 const RootStyle = styled(Box)(({ theme }) => ({
-  position: "absolute",
+  position: "static",
   bottom: 0,
   left: 0,
   width: "100%",
-  height: "35%",
+  height: "300px",
   backgroundColor: theme.palette.background.paper,
   boxShadow: theme.shadows[24],
+  [theme.breakpoints.up("lg")]: {
+    flexDirection: "column",
+    marginTop: "-4.5em",
+    height: "250px",
+  },
+  [theme.breakpoints.down("md")]: {
+    position: "static",
+    bottom: 0,
+    height: "110%",
+  },
+  [theme.breakpoints.down("sm")]: {
+    position: "static",
+    bottom: 0,
+    height: "130%",
+  },
+
 }));
 const ContentStyle = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -29,7 +46,7 @@ const ContentStyle = styled(Box)(({ theme }) => ({
   borderBottom: `5px solid ${theme.palette.background.main}`,
   width: "80%",
   borderTopRightColor: "blue",
-  marginTop: "-5.5em",
+  marginTop: "-4.5em",
   marginLeft: "auto",
   marginRight: "auto",
   display: "flex",
@@ -38,6 +55,11 @@ const ContentStyle = styled(Box)(({ theme }) => ({
   boxShadow: theme.shadows[15],
   borderRadius: "5px",
   paddingBottom: "1em",
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    marginTop: "-6.5em",
+  },
+
 }));
 const StyledBox = styled(Grid)(({ theme }) => ({
   backgrounColor: theme.palette.background.paper,
@@ -60,6 +82,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 }));
 // Footer JSX
 export default function Footer() {
+  const theme = useTheme();
   return (
     <RootStyle>
       <Divider
@@ -68,7 +91,7 @@ export default function Footer() {
           filter: "drop-shadow(.5em)",
           borderRadius: "1em",
           boxShadow: (theme) => theme.shadows[24],
-          marginTop: ".5em",
+          marginTop: "1em",
           marginRight: "auto",
           marginLeft: "auto",
           height: "7px",
@@ -81,7 +104,7 @@ export default function Footer() {
           filter: "drop-shadow(.5em)",
           borderRadius: "1em",
           boxShadow: (theme) => theme.shadows[24],
-          marginTop: ".5em",
+          marginTop: "1em",
           marginRight: "auto",
           marginLeft: "auto",
           height: "7px",
@@ -166,6 +189,22 @@ export default function Footer() {
               textAlign={"center"}
             >
               Cameras & Photography
+              {theme.breakpoints.down("lg") ? (
+                <Divider
+                  sx={{
+                    width: "85%",
+                    filter: "drop-shadow(.5em)",
+                    borderRadius: "1em",
+                    boxShadow: (theme) => theme.shadows[24],
+                    marginTop: "1.2em",
+                    marginRight: "auto",
+                    marginLeft: "auto",
+                    height: "1px",
+                    visibility: "hidden",
+                    backgroundColor: "transparent",
+                  }}
+                />
+              ) : null}
             </StyledLink>
           </Box>
         </StyledBox>
@@ -272,23 +311,30 @@ export default function Footer() {
               textAlign={"center"}
             >
               Visual Composer Elements
-            </StyledLink>
-          </Box>
-          <Box>
-            <StyledLink
-              to="/hello"
-              component={RouterLink}
-              variant="subtitle1"
-              textAlign={"center"}
-            >
-              WooCommerce Pages
+              {theme.breakpoints.down("md") ? (
+                <Divider
+                  sx={{
+                    width: "85%",
+                    filter: "drop-shadow(.5em)",
+                    borderRadius: "1em",
+                    boxShadow: (theme) => theme.shadows[24],
+                    marginTop: "1.2em",
+                    marginRight: "auto",
+                    marginLeft: "auto",
+                    height: "1px",
+                    visibility: "hidden",
+                    backgroundColor: "transparent",
+                  }}
+                />
+              ) : null}
+
             </StyledLink>
           </Box>
         </StyledBox>
       </ContentStyle>
 
       <Lottie
-        style={{ marginTop: "-4em" }}
+        style={{ marginTop: theme.breakpoints.down("md") ? "-4.2em" : "-4em" }}
         options={animationSetter(animation)}
         width={"30%"}
         height={"100px"}
