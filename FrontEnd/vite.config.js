@@ -16,7 +16,9 @@ export default defineConfig({
         })
       },
     },
-    react(),
+    react({
+      include:'./src'
+    }),
   ],
 
   optimizeDeps: {

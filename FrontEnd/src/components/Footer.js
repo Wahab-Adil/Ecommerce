@@ -2,10 +2,11 @@
 import { Box, Typography, styled, Button, Grid, Link, Divider } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 // Lottie 
-import Lottie from 'react-lottie'
+import Lottie from 'react-lottie';
 import animation from '../animations/user-profile.json'
 import animationSetter from '../animations/animationSetter'
 // Styles
+
 const RootStyle = styled(Box)(({ theme }) => ({
    position: 'absolute',
    bottom: 0,
