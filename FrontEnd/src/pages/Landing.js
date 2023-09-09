@@ -8,7 +8,6 @@ const Landing = () => {
   return (
     <>
        <MainHeader/>
-      <Typography variant='h3' color='primary.main'>This is Landing Page With Primary Color</Typography>
       <Mycart/>
       {/* <Footer/> */}
     </>

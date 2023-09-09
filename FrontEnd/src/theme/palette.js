@@ -64,24 +64,24 @@ const GREY = {
 
 const palette = {
   common: { black: '#000', white: '#fff' },
-    grey:{main:"#78798E"},
-    text: { primary: '#000000'},
-    background: { main:'#e3f2f1' , paper: '#f4ffff' , },
-    action: {
-      hover: GREY[500_8],
-      selected: GREY[500_16],
-      disabled: GREY[500_80],
-      disabledBackground: GREY[500_24],
-      focus: GREY[500_24],
-      hoverOpacity: 0.08,
-      disabledOpacity: 0.48,
-    },
-    primary: { main:'#D020C9' },
-    secondary: { ...SECONDARY },
-    info: { ...INFO },
-    success: { ...SUCCESS },
-    warning: { ...WARNING},
-    error: { ...ERROR },
+  grey: { main: "#78798E" },
+  text: { primary: '#000000' },
+  background: { main: '#e3f2f1', paper: '#f4ffff', },
+  action: {
+    hover: GREY[500_8],
+    selected: GREY[500_16],
+    disabled: GREY[500_80],
+    disabledBackground: GREY[500_24],
+    focus: GREY[500_24],
+    hoverOpacity: 0.08,
+    disabledOpacity: 0.48,
+  },
+  primary: { main: '#D020C9' },
+  secondary: { ...SECONDARY },
+  info: { ...INFO },
+  success: { ...SUCCESS },
+  warning: { ...WARNING },
+  error: { ...ERROR },
 };
 
 export default palette;
