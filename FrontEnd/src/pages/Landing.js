@@ -1,16 +1,23 @@
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import Mycart from "./Mycart";
 // import layouts
 import MainHeader from "../layouts/MainHeader";
-import Footer from '../layouts/Footer';
+import Footer from "../layouts/Footer";
+// import Sections
+import { LandingHero,LandingProducts,LandingFaqs } from "../sections/LandingPage";
+
 
 const Landing = () => {
   return (
     <>
-       <MainHeader/>
-      <Typography variant='h3' color='primary.main'>This is Landing Page With Primary Color</Typography>
-      <Mycart/>
-      {/* <Footer/> */}
+      <MainHeader />
+      <Box style={{ marginTop: "80px" }}>
+        <LandingHero />
+        <LandingProducts />
+        <LandingFaqs />
+      </Box>
+      <Mycart />
+      <Footer />
     </>
   );
 };
