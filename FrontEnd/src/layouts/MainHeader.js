@@ -9,12 +9,23 @@ import {
   Drawer,
   List,
   ListItem,
+  ListItemIcon,
   ListItemText,
   Box,
   useMediaQuery,
   useTheme,
+  Select,
+  MenuItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import HomeIcon from "@material-ui/icons/Home";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import FurnitureIcon from "@material-ui/icons/Weekend";
+import LivingRoomIcon from "@material-ui/icons/Weekend";
+import AboutIcon from "@material-ui/icons/Info";
+import ContactIcon from "@material-ui/icons/ContactMail";
+import LockIcon from "@material-ui/icons/Lock";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -42,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    
   },
   drawerPaper: {
     width: drawerWidth,
@@ -50,8 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerContainer: {
     overflow: "auto",
-    color:"white"
-
+    color: "white",
   },
   content: {
     flexGrow: 1,
@@ -61,13 +70,25 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "inherit",
   },
+  select: {
+    color: "white",
+    "&:focus": {
+      backgroundColor: "#f5f5f5",
+    },
+  },
 }));
 
 const MainHeader = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [select, setSelect] = React.useState(0);
+  const handleChange = (event) => {
+    setSelect(event.target.value);
+  };
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   useEffect(() => {
     if (!isMobile) {
       setOpen(false); // Close the sidebar when switching to PC size
@@ -105,31 +126,129 @@ const MainHeader = () => {
                 Furniture E-commerce Website
               </Typography>
               <Box>
-                <Button color="inherit" component={Link} to="/">
-                  Home
-                </Button>
-                <Button color="inherit" component={Link} to="/shop">
-                  Shop Now
-                </Button>
-                <Button color="inherit" component={Link} to="/furniture">
-                  Furniture
-                </Button>
-                <Button color="inherit" component={Link} to="/living-room">
-                  Living Room
-                </Button>
-                <Button color="inherit" component={Link} to="/about">
-                  About Us
-                </Button>
-                <Button color="inherit" component={Link} to="/contact">
-                  Contact Us
-                </Button>
+                {isMdScreen ? (
+                  <Select
+                    // variant="outlined"
+                    // displayEmpty
+                    value={select}
+                    onChange={handleChange}
+                    inputProps={{ "aria-label": "navigation" }}
+                    classes={{ root: classes.select }}
+                  >
+                    <MenuItem
+                      value={0}
+                      component={Link}
+                      to="/"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <HomeIcon style={{ marginRight: "8px" }} />
+                      Home
+                    </MenuItem>
+                    <MenuItem
+                      value={1}
+                      component={Link}
+                      to="/shop"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <ShoppingCartIcon style={{ marginRight: "8px" }} />
+                      Shop Now
+                    </MenuItem>
+                    <MenuItem
+                      value={2}
+                      component={Link}
+                      to="/furniture"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <FurnitureIcon style={{ marginRight: "8px" }} />
+                      Furniture
+                    </MenuItem>
+                    <MenuItem
+                      value={3}
+                      component={Link}
+                      to="/living-room"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <LivingRoomIcon style={{ marginRight: "8px" }} />
+                      Living Room
+                    </MenuItem>
+                    <MenuItem
+                      value={4}
+                      component={Link}
+                      to="/about"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <AboutIcon style={{ marginRight: "8px" }} />
+                      About Us
+                    </MenuItem>
+                    <MenuItem
+                      value={5}
+                      component={Link}
+                      to="/contact"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <ContactIcon style={{ marginRight: "8px" }} />
+                      Contact Us
+                    </MenuItem>
+                  </Select>
+                ) : (
+                  <>
+                    <Button
+                      color="inherit"
+                      component={Link}
+                      to="/"
+                      startIcon={<HomeIcon />}
+                    >
+                      Home
+                    </Button>
+                    <Button
+                      color="inherit"
+                      component={Link}
+                      to="/shop"
+                      startIcon={<ShoppingCartIcon />}
+                    >
+                      Shop Now
+                    </Button>
+                    <Button
+                      color="inherit"
+                      component={Link}
+                      to="/furniture"
+                      startIcon={<FurnitureIcon />}
+                    >
+                      Furniture
+                    </Button>
+                    <Button
+                      color="inherit"
+                      component={Link}
+                      to="/living-room"
+                      startIcon={<LivingRoomIcon />}
+                    >
+                      Living Room
+                    </Button>
+                    <Button
+                      color="inherit"
+                      component={Link}
+                      to="/about"
+                      startIcon={<AboutIcon />}
+                    >
+                      About Us
+                    </Button>
+                    <Button
+                      color="inherit"
+                      component={Link}
+                      to="/contact"
+                      startIcon={<ContactIcon />}
+                    >
+                      Contact Us
+                    </Button>
+                  </>
+                )}
               </Box>
               <Box>
                 <Button color="inherit" component={Link} to="/login">
-                  Login
+                  <LockIcon /> &nbsp; Login
                 </Button>
                 <Button color="inherit" component={Link} to="/register">
-                  Register
+                  <PersonAddIcon /> &nbsp; Register
                 </Button>
               </Box>
             </>
@@ -149,27 +268,51 @@ const MainHeader = () => {
         <div className={classes.drawerContainer}>
           <List>
             <ListItem button component={Link} to="/">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
             <ListItem button component={Link} to="/shop">
+              <ListItemIcon>
+                <ShoppingCartIcon />
+              </ListItemIcon>
               <ListItemText primary="Shop Now" />
             </ListItem>
             <ListItem button component={Link} to="/furniture">
+              <ListItemIcon>
+                <FurnitureIcon />
+              </ListItemIcon>
               <ListItemText primary="Furniture" />
             </ListItem>
             <ListItem button component={Link} to="/living-room">
+              <ListItemIcon>
+                <LivingRoomIcon />
+              </ListItemIcon>
               <ListItemText primary="Living Room" />
             </ListItem>
             <ListItem button component={Link} to="/about">
+              <ListItemIcon>
+                <AboutIcon />
+              </ListItemIcon>
               <ListItemText primary="About Us" />
             </ListItem>
             <ListItem button component={Link} to="/contact">
+              <ListItemIcon>
+                <ContactIcon />
+              </ListItemIcon>
               <ListItemText primary="Contact Us" />
             </ListItem>
             <ListItem button component={Link} to="/login">
+              <ListItemIcon>
+                <LockIcon />
+              </ListItemIcon>
               <ListItemText primary="Login" />
             </ListItem>
             <ListItem button component={Link} to="/register">
+              <ListItemIcon>
+                <PersonAddIcon />
+              </ListItemIcon>
               <ListItemText primary="Register" />
             </ListItem>
           </List>
