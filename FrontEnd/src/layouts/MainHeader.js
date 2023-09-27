@@ -186,7 +186,7 @@ const MainHeader = () => {
                       to="/contact"
                       style={{ display: "flex", alignItems: "center" }}
                     >
-                      <ContactIcon style={{ marginRight: "8px" }} />
+                      <ContactIcon  style={{ marginRight: "8px" }} />
                       Contact Us
                     </MenuItem>
                   </Select>
