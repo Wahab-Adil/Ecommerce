@@ -1,11 +1,11 @@
 {
-  "name":"Ecommerce Backend",
-  "main":"server.js",
-  "Description":"Ecommerce Backend Api",
-  "type":"module",
+  "name": "Ecommerce Backend",
+  "main": "server.js",
+  "Description": "Ecommerce Backend Api",
+  "type": "module",
   "scripts": {
-    "test":"echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
