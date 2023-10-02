@@ -10,7 +10,7 @@ export default function isLoggedIn(req, res, next) {
   if (!verifiedToken) {
     throw new Error("Invalid/Expired token, please login again");
   } else {
-    req.AuthUserId = verifiedToken?.id;
+    req.AuthUserId = verifiedToken?.payload;
     next();
   }
 }
