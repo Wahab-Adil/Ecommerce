@@ -1,7 +1,7 @@
 import ProductModel from "../models/product.js";
 import expressAsyncHandler from "express-async-handler";
 export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
-  const { name, description, category, sizes, colors, user, price, totalQty } =
+  const { name, description, brand, category, sizes, colors, price, totalQty } =
     req.body;
   // check is Product Exist
   const isExistProduct = await ProductModel.findOne({ name });
@@ -11,6 +11,7 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
   const createdProduct = await ProductModel.create({
     name,
     description,
+    brand,
     category,
     sizes,
     colors,

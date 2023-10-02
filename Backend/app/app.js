@@ -21,7 +21,7 @@ dotenv.config();
 app.use(express.json());
 
 // routes
-app.use("api/user/", userRoutes);
+app.use("/api/user/", userRoutes);
 app.use("/api/product/", productRouter);
 
 // catching Errors
