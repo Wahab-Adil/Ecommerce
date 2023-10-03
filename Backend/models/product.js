@@ -37,6 +37,7 @@ const productSchema = new Schema(
     images: [{ type: String, default: "https://via.placeholder.com/150" }],
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
     price: { type: Number, required: true },
+    totalQty: { type: Number, required: true },
     totalSold: {
       type: Number,
       required: true,
@@ -45,3 +46,6 @@ const productSchema = new Schema(
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
+
+const productModel = mongoose.model("product", productSchema);
+export default productModel;
