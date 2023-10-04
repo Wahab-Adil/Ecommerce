@@ -5,6 +5,7 @@ import {
   filterProduct,
   getSingleProduct,
   updateProduct,
+  deleteProduct,
 } from "../controllers/productCtr.js";
 import isLoggedIn from "../middlewares/isloggedIn.js";
 
@@ -19,5 +20,7 @@ productRouter.get("/:id", getSingleProduct);
 productRouter.get("/all", getAllProducts);
 // filter product
 productRouter.get("/", filterProduct);
+// filter product
+productRouter.delete("/delete/:id", deleteProduct);
 
 export default productRouter;
