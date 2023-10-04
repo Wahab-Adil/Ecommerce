@@ -151,3 +151,18 @@ export const filterProduct = expressAsyncHandler(async (req, res, next) => {
     message: "product fetced successfully",
   });
 });
+
+//  logic For  fetching  single Product
+
+// @-desc-  fetching SinglePRoduct
+// @route - api/product/:id
+// @access  Public
+
+export const getSingleProduct = expressAsyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const singleProduct = await ProductModel.findById({ _id: id });
+  if (!singleProduct) {
+    throw new Error("Product not Found");
+  }
+  res.json({ status: "success", result: singleProduct });
+});
