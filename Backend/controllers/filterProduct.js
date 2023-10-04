@@ -2,59 +2,7 @@ import productModel from "../models/product.js";
 import ProductModel from "../models/product.js";
 import expressAsyncHandler from "express-async-handler";
 
-//  logic For  create product
-
-// @-desc-  creating product
-// @route - api/product/create
-// @access  Private/Admin
-
-export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
-  const { name, description, brand, category, sizes, colors, price, totalQty } =
-    req.body;
-  // check is Product Exist
-  const isExistProduct = await ProductModel.findOne({ name });
-  if (isExistProduct) {
-    throw new Error("Product is Already Exist");
-  }
-
-  const createdProduct = await ProductModel.create({
-    user: req.AuthUserId,
-    name,
-    description,
-    brand,
-    category,
-    sizes,
-    colors,
-    price,
-    totalQty,
-  });
-
-  // push product to category
-
-  res.json({
-    state: "success",
-    message: "product created successfully",
-    product: createdProduct,
-  });
-});
-
-//  logic For  fetch all Product
-
-// @-desc-  fetch product
-// @route - api/product
-// @access  Public
-
-export const getAllProducts = expressAsyncHandler(async (req, res, next) => {
-  const allProducts = await productModel.find({});
-  if (allProducts) {
-    res.json({ status: "success", products: allProducts });
-  } else {
-    throw new Error("No Products Avaliable");
-  }
-});
-
-//  logic For  filtering  Products with pagination
-
+//  logic For  filtering  Products
 // @-desc-  filter product
 // @route - api/product/ ?value
 // @access  Public
@@ -106,48 +54,20 @@ export const filterProduct = expressAsyncHandler(async (req, res, next) => {
     });
   }
 
-  console.log(req.query.limit);
   // pagination
-  //  mentioned page
+  // page mentioned
   const page = parseInt(req.query.page) ? parseInt(req.query.page) : 1;
-  //  mentioned limit
+  // limit mentioned
   const limit = parseInt(req.query.limit) ? parseInt(req.query.limit) : 10;
-  console.log(page, "page", "limit", limit);
   // first -index
-  const startIndex = (page - 1) * limit;
+  const firstIndex = (page - 1) * limit;
   // last- Index
-  const endIndex = page * limit;
+  const lastIndex = page * limit;
   // total Records
   const total = await productModel.countDocuments();
-
-  // paginate products with mentioned queries
-  filterdProducts = filterdProducts.skip(startIndex).limit(limit);
-
-  // pagination result
-  const paginationResult = {};
-
-  if (startIndex > 0) {
-    paginationResult.prev = {
-      page: page - 1,
-      limit,
-    };
-  }
-  if (endIndex < total) {
-    paginationResult.next = {
-      page: page + 1,
-      limit,
-    };
-  }
 
   // final result of filterd product
   const products = await filterdProducts;
 
-  res.json({
-    status: "success",
-    total,
-    results: products.length,
-    paginationResult,
-    filterProducts: products,
-    message: "product fetced successfully",
-  });
+  res.json({ status: "success", filterProducts: products });
 });
