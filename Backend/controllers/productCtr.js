@@ -166,3 +166,38 @@ export const getSingleProduct = expressAsyncHandler(async (req, res) => {
   }
   res.json({ status: "success", result: singleProduct });
 });
+
+//  logic For  updating  single Product
+
+// @-desc-  fetching SinglePRoduct
+// @route - api/product/update/:id
+// @access  Public
+
+export const updateProduct = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const { name, description, brand, category, sizes, colors, price, totalQty } =
+    req.body;
+
+  const exsitedProduct = await productModel.findByIdAndUpdate(
+    _id,
+    {
+      name,
+      description,
+      brand,
+      category,
+      user: req.AuthUserId,
+      sizes,
+      colors,
+      price,
+      totalQty,
+    },
+    { new: true }
+  );
+  console.log(req.AuthUserId);
+
+  const updatedProduct = await exsitedProduct.save();
+  if (!exsitedProduct) {
+    throw new Error("product not found");
+  }
+  res.json({ status: "success", product: updatedProduct });
+});
