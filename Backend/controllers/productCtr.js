@@ -171,7 +171,7 @@ export const getSingleProduct = expressAsyncHandler(async (req, res) => {
 
 // @-desc-  fetching SinglePRoduct
 // @route - api/product/update/:id
-// @access  Public
+// @access  Private/Admin
 
 export const updateProduct = expressAsyncHandler(async (req, res) => {
   const _id = req.params.id;
@@ -200,4 +200,20 @@ export const updateProduct = expressAsyncHandler(async (req, res) => {
     throw new Error("product not found");
   }
   res.json({ status: "success", product: updatedProduct });
+});
+
+//  logic For  deleting  single Product
+
+// @-desc-  delete SinglePRoduct
+// @route - api/product/delete/:id
+// @access  Private/Admin
+
+export const deleteProduct = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const isDeletedProduct = await productModel.findByIdAndDelete({ _id });
+
+  if (!isDeletedProduct) {
+    throw new Error("Product already deleted or Not Exist !");
+  }
+  res.json({ status: "success", message: "product deleted successfully !" });
 });
