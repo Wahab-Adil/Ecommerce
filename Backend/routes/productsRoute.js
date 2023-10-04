@@ -1,8 +1,8 @@
 import express from "express";
 import {
   createProductCtr,
-  filterProduct,
   getAllProducts,
+  filterProduct,
 } from "../controllers/productCtr.js";
 import isLoggedIn from "../middlewares/isloggedIn.js";
 
