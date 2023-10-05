@@ -42,3 +42,18 @@ export const getAllCategories = expressAsyncHandler(async (req, res) => {
   }
   res.json({ status: "success", categories });
 });
+
+//  logic For  fetch single category
+
+// @-desc-  fetch category
+// @route - api/category/:id
+// @access  Public
+
+export const getSingleCategory = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const foundCategory = await categoryModel.find({ _id });
+  if (!foundCategory) {
+    throw new Error("Category not found");
+  }
+  res.json({ status: "success", category: foundCategory });
+});
