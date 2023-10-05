@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import dbConnection from "../config/dbConnect.js";
 import userRoutes from "../routes/usersRoute.js";
 import productRouter from "../routes/productsRoute.js";
+import categoryRouter from "../routes/categroyRoute.js";
 
 // middalewares
 import {
@@ -23,6 +24,7 @@ app.use(express.json());
 // routes
 app.use("/api/user/", userRoutes);
 app.use("/api/product/", productRouter);
+app.use("/api/category/", categoryRouter);
 
 // catching Errors
 app.use(notFoundErrHandler);
