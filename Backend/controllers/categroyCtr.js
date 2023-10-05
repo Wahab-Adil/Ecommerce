@@ -66,7 +66,11 @@ export const getSingleCategory = expressAsyncHandler(async (req, res) => {
 export const updateCategory = expressAsyncHandler(async (req, res) => {
   const _id = req.params.id;
   const { name } = req.body;
-  const updatedCategory = await categoryModel.findByIdAndUpdate(_id, { name });
+  const updatedCategory = await categoryModel.findByIdAndUpdate(
+    _id,
+    { name },
+    { new: true }
+  );
   if (!updatedCategory) {
     throw new Error("Category not updated");
   }
