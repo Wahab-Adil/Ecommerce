@@ -57,3 +57,18 @@ export const getSingleCategory = expressAsyncHandler(async (req, res) => {
   }
   res.json({ status: "success", category: foundCategory });
 });
+//  logic For  update category
+
+// @-desc-  update category
+// @route - api/category/update/:id
+// @access  Private/Admin
+
+export const updateCategory = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const { name } = req.body;
+  const updatedCategory = await categoryModel.findByIdAndUpdate(_id, { name });
+  if (!updatedCategory) {
+    throw new Error("Category not updated");
+  }
+  res.json({ status: "success", category: updatedCategory });
+});
