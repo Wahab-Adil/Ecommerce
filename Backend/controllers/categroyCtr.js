@@ -57,3 +57,37 @@ export const getSingleCategory = expressAsyncHandler(async (req, res) => {
   }
   res.json({ status: "success", category: foundCategory });
 });
+//  logic For  update category
+
+// @-desc-  update category
+// @route - api/category/update/:id
+// @access  Private/Admin
+
+export const updateCategory = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const { name } = req.body;
+  const updatedCategory = await categoryModel.findByIdAndUpdate(
+    _id,
+    { name },
+    { new: true }
+  );
+  if (!updatedCategory) {
+    throw new Error("Category not updated");
+  }
+  res.json({ status: "success", category: updatedCategory });
+});
+
+//  logic For  delete category
+
+// @-desc-  delete category
+// @route - api/category/:id
+// @access  Private/Admin
+
+export const deleteCategory = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const isDeletedCategory = await categoryModel.findByIdAndDelete(_id);
+  if (!isDeletedCategory) {
+    throw new Error("Category Already deleted or doesn't Exist");
+  }
+  res.json({ status: "success", message: "Categroy deleted Successfully" });
+});
