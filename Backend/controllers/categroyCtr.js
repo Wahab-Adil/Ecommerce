@@ -76,3 +76,18 @@ export const updateCategory = expressAsyncHandler(async (req, res) => {
   }
   res.json({ status: "success", category: updatedCategory });
 });
+
+//  logic For  delete category
+
+// @-desc-  delete category
+// @route - api/category/:id
+// @access  Private/Admin
+
+export const deleteCategory = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const isDeletedCategory = await categoryModel.findByIdAndDelete(_id);
+  if (!isDeletedCategory) {
+    throw new Error("Category Already deleted or doesn't Exist");
+  }
+  res.json({ status: "success", message: "Categroy deleted Successfully" });
+});
