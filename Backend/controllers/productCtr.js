@@ -1,3 +1,4 @@
+import categoryModel from "../models/category.js";
 import productModel from "../models/product.js";
 import ProductModel from "../models/product.js";
 import expressAsyncHandler from "express-async-handler";
@@ -17,6 +18,17 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
     throw new Error("Product is Already Exist");
   }
 
+  // find Existing category
+  const foundCategory = await categoryModel.findOne({
+    name: category,
+  });
+  console.log(category, foundCategory);
+  if (!foundCategory) {
+    throw new Error(
+      "Category not found,please create category first or check category name"
+    );
+  }
+
   const createdProduct = await ProductModel.create({
     user: req.AuthUserId,
     name,
@@ -30,6 +42,10 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
   });
 
   // push product to category
+  foundCategory.products.push(createdProduct._id);
+
+  // after pushing product to category let save it again
+  await foundCategory.save();
 
   res.json({
     state: "success",
