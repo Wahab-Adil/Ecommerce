@@ -1,5 +1,5 @@
 import expressAsyncHandler from "express-async-handler";
-import brandModel from "../models/brand";
+import brandModel from "../models/brand.js";
 
 export const createBrand = expressAsyncHandler(async (req, res) => {
   const { name } = req.body;
