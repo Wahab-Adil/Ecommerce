@@ -68,18 +68,18 @@ export const getSingleColor = expressAsyncHandler(async (req, res) => {
 export const updateColor = expressAsyncHandler(async (req, res) => {
   const _id = req.params.id;
   const { name } = req.body;
-  const exisitedColor = await colorModel.findByIdAndUpdate(
+  const newColor = await colorModel.findByIdAndUpdate(
     _id,
     { name },
     { new: true }
   );
 
-  if (!exisitedColor) {
-    throw new Error(" Brand not Found !");
+  if (!newColor) {
+    throw new Error(" Color not Found !");
   }
   res.json({
     status: "success",
-    message: "brand Seccessfully updated!",
-    exisitedColor,
+    message: "Color Seccessfully updated!",
+    color: newColor,
   });
 });
