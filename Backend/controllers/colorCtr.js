@@ -48,7 +48,7 @@ export const getSingleColor = expressAsyncHandler(async (req, res) => {
   if (_id === undefined) {
     throw new Error(" please Mention Color Name!");
   }
-  const SingleColor = await brandModel.findOne({ _id });
+  const SingleColor = await colorModel.findOne({ _id });
 
   if (!SingleColor) {
     throw new Error(" Color does't exist !");
