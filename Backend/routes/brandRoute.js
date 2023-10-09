@@ -4,6 +4,7 @@ import {
   createBrand,
   getAllBrands,
   getSingleBrand,
+  updateBrand,
 } from "../controllers/brandCtr.js";
 
 const brandRouter = express.Router();
@@ -11,5 +12,6 @@ const brandRouter = express.Router();
 brandRouter.post("/create", isLoggedIn, createBrand);
 brandRouter.get("/", getAllBrands);
 brandRouter.get("/:id", getSingleBrand);
+brandRouter.put("/update/:id", updateBrand);
 
 export default brandRouter;
