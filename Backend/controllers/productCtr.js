@@ -1,6 +1,6 @@
 import categoryModel from "../models/category.js";
 import productModel from "../models/product.js";
-import ProductModel from "../models/product.js";
+import brandModel from "../models/brand.js";
 import expressAsyncHandler from "express-async-handler";
 
 //  logic For  create product
@@ -22,10 +22,19 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
   const foundCategory = await categoryModel.findOne({
     name: category,
   });
+  // find Existing brand
+  const foundBrand = await brandModel.findOne({
+    name: brand.toLowerCase(),
+  });
   console.log(category, foundCategory);
   if (!foundCategory) {
     throw new Error(
       "Category not found,please create category first or check category name"
+    );
+  }
+  if (!foundBrand) {
+    throw new Error(
+      "Brand not found,please create Brand first or check Brand name"
     );
   }
 
@@ -46,6 +55,12 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
 
   // after pushing product to category let save it again
   await foundCategory.save();
+
+  // push product to brand
+  foundBrand.products.push(createdProduct._id);
+
+  // after pushing product to brand let save it again
+  await foundBrand.save();
 
   res.json({
     state: "success",
