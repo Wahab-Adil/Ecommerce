@@ -6,8 +6,9 @@ import userRoutes from "../routes/usersRoute.js";
 import productRouter from "../routes/productsRoute.js";
 import categoryRouter from "../routes/categroyRoute.js";
 import brandRouter from "../routes/brandRoute.js";
+import colorRouter from "../routes/colorRoute.js";
 
-// middalewares
+// Error - middalewares
 import {
   globalErrorHandler,
   notFoundErrHandler,
@@ -27,6 +28,7 @@ app.use("/api/user/", userRoutes);
 app.use("/api/product/", productRouter);
 app.use("/api/category/", categoryRouter);
 app.use("/api/brand/", brandRouter);
+app.use("/api/collor/", colorRouter);
 
 // catching Errors
 app.use(notFoundErrHandler);
