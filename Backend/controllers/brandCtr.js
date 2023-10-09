@@ -59,3 +59,45 @@ export const getSingleBrand = expressAsyncHandler(async (req, res) => {
     brand: SingleBrand,
   });
 });
+
+//  logic For  update brand
+// @-desc-  update brand
+// @route - api/brand/update/:id
+// @access  private/Admin
+
+export const updateBrand = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const { name } = req.body;
+  const exisitedBrand = await brandModel.findByIdAndUpdate(
+    _id,
+    { name },
+    { new: true }
+  );
+
+  if (!exisitedBrand) {
+    throw new Error(" Brand not Found !");
+  }
+  res.json({
+    status: "success",
+    message: "brand Seccessfully updated!",
+    updateBrand,
+  });
+});
+
+//  logic For  delete brand
+// @-desc-  delete brand
+// @route - api/brand/:id
+// @access  private/Admin
+
+export const deleteBrand = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const isDeleted = await brandModel.findByIdAndDelete(_id);
+
+  if (!isDeleted) {
+    throw new Error(" Brand Already Deleted or Dosn't Exist !");
+  }
+  res.json({
+    status: "success",
+    message: "brand Seccessfully deleted!",
+  });
+});
