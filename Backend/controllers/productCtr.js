@@ -13,7 +13,7 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
   const { name, description, brand, category, sizes, colors, price, totalQty } =
     req.body;
   // check is Product Exist
-  const isExistProduct = await ProductModel.findOne({ name });
+  const isExistProduct = await productModel.findOne({ name });
   if (isExistProduct) {
     throw new Error("Product is Already Exist");
   }
@@ -38,7 +38,7 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
     );
   }
 
-  const createdProduct = await ProductModel.create({
+  const createdProduct = await productModel.create({
     user: req.AuthUserId,
     name,
     description,
@@ -91,7 +91,7 @@ export const getAllProducts = expressAsyncHandler(async (req, res, next) => {
 // @access  Public
 
 export const filterProduct = expressAsyncHandler(async (req, res, next) => {
-  let filterdProducts = ProductModel.find();
+  let filterdProducts = productModel.find();
 
   // filtering products by product name
   if (req.query.name) {
@@ -191,7 +191,7 @@ export const filterProduct = expressAsyncHandler(async (req, res, next) => {
 
 export const getSingleProduct = expressAsyncHandler(async (req, res) => {
   const id = req.params.id;
-  const singleProduct = await ProductModel.findById({ _id: id });
+  const singleProduct = await productModel.findById({ _id: id });
   if (!singleProduct) {
     throw new Error("Product not Found");
   }
