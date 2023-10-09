@@ -1,6 +1,6 @@
 import categoryModel from "../models/category.js";
 import productModel from "../models/product.js";
-import ProductModel from "../models/product.js";
+import brandModel from "../models/brand.js";
 import expressAsyncHandler from "express-async-handler";
 
 //  logic For  create product
@@ -13,7 +13,7 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
   const { name, description, brand, category, sizes, colors, price, totalQty } =
     req.body;
   // check is Product Exist
-  const isExistProduct = await ProductModel.findOne({ name });
+  const isExistProduct = await productModel.findOne({ name });
   if (isExistProduct) {
     throw new Error("Product is Already Exist");
   }
@@ -22,14 +22,23 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
   const foundCategory = await categoryModel.findOne({
     name: category,
   });
+  // find Existing brand
+  const foundBrand = await brandModel.findOne({
+    name: brand.toLowerCase(),
+  });
   console.log(category, foundCategory);
   if (!foundCategory) {
     throw new Error(
       "Category not found,please create category first or check category name"
     );
   }
+  if (!foundBrand) {
+    throw new Error(
+      "Brand not found,please create Brand first or check Brand name"
+    );
+  }
 
-  const createdProduct = await ProductModel.create({
+  const createdProduct = await productModel.create({
     user: req.AuthUserId,
     name,
     description,
@@ -46,6 +55,12 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
 
   // after pushing product to category let save it again
   await foundCategory.save();
+
+  // push product to brand
+  foundBrand.products.push(createdProduct._id);
+
+  // after pushing product to brand let save it again
+  await foundBrand.save();
 
   res.json({
     state: "success",
@@ -76,7 +91,7 @@ export const getAllProducts = expressAsyncHandler(async (req, res, next) => {
 // @access  Public
 
 export const filterProduct = expressAsyncHandler(async (req, res, next) => {
-  let filterdProducts = ProductModel.find();
+  let filterdProducts = productModel.find();
 
   // filtering products by product name
   if (req.query.name) {
@@ -176,7 +191,7 @@ export const filterProduct = expressAsyncHandler(async (req, res, next) => {
 
 export const getSingleProduct = expressAsyncHandler(async (req, res) => {
   const id = req.params.id;
-  const singleProduct = await ProductModel.findById({ _id: id });
+  const singleProduct = await productModel.findById({ _id: id });
   if (!singleProduct) {
     throw new Error("Product not Found");
   }
