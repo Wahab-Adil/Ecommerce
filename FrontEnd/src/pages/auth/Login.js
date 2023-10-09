@@ -96,9 +96,9 @@ export default function Login() {
 
       {isMdScreen && (
         <SectionStyle>
-          <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
+          {/* <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
             Hi, Welcome Back
-          </Typography>
+          </Typography> */}
           {/* <Image visibleByDefault disabledEffect src="/assets/illustrations/illustration_login.png" alt="login" /> */}
         </SectionStyle>
       )}
@@ -132,7 +132,25 @@ export default function Login() {
           </Alert> */}
 
           <LoginForm />
-
+          {!isMobile && (
+            <Typography variant="body2" align="center" sx={{ mt: 3 }}>
+              Don’t have an account?{" "}
+              <Link
+                variant="subtitle2"
+                component={RouterLink}
+                to={PATH_AUTH.register}
+              >
+                Get started
+              </Link>
+              <Link
+                variant="subtitle2"
+                component={RouterLink}
+                to={PATH_AUTH.newPassword}
+              >
+               <br/> Forget Password
+              </Link>
+            </Typography>
+          )}
           {!isMdScreen && (
             <Typography variant="body2" align="center" sx={{ mt: 3 }}>
               Don’t have an account?{" "}

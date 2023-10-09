@@ -1,4 +1,3 @@
-import { capitalCase } from 'change-case';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
@@ -90,9 +89,9 @@ export default function Register() {
 
         {isMdScreen && (
           <SectionStyle>
-            <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
+            {/* <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Manage the job more effectively with Minimal
-            </Typography>
+            </Typography> */}
             {/* <Image
               visibleByDefault
               disabledEffect

@@ -83,9 +83,8 @@ export default function RegisterForm() {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
-                 <Button > 
-                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                 </Button>
+                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                
                   {/* <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} /> */}
                 </IconButton>
               </InputAdornment>
