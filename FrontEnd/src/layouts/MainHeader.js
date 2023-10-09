@@ -27,6 +27,7 @@ import ContactIcon from "@material-ui/icons/ContactMail";
 import LockIcon from "@material-ui/icons/Lock";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { Link } from "react-router-dom";
+import { PATH_AUTH } from "../routes/path";
 
 const drawerWidth = 240;
 
@@ -244,7 +245,7 @@ const MainHeader = () => {
                 )}
               </Box>
               <Box>
-                <Button color="inherit" component={Link} to="/login">
+                <Button color="inherit" component={Link} to={PATH_AUTH.login}>
                   <LockIcon /> &nbsp; Login
                 </Button>
                 <Button color="inherit" component={Link} to="/register">
@@ -303,7 +304,7 @@ const MainHeader = () => {
               </ListItemIcon>
               <ListItemText primary="Contact Us" />
             </ListItem>
-            <ListItem button component={Link} to="/login">
+            <ListItem button component={Link} to={PATH_AUTH.login}>
               <ListItemIcon>
                 <LockIcon />
               </ListItemIcon>
