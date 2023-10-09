@@ -37,3 +37,25 @@ export const getAllColors = expressAsyncHandler(async (req, res) => {
   }
   res.json({ status: "success", colors: AllColors });
 });
+
+//  logic For  fetch single Color
+// @-desc-  fetch color
+// @route - api/color/:id
+// @access  public
+
+export const getSingleColor = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  if (_id === undefined) {
+    throw new Error(" please Mention Color Name!");
+  }
+  const SingleColor = await brandModel.findOne({ _id });
+
+  if (!SingleColor) {
+    throw new Error(" Color does't exist !");
+  }
+  res.json({
+    status: "success",
+    message: "color Seccessfully fetched!",
+    color: SingleColor,
+  });
+});
