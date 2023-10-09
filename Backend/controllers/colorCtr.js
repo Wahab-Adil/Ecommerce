@@ -23,3 +23,17 @@ export const createColor = expressAsyncHandler(async (req, res) => {
   }
   res.json({ status: "success", message: "Color created successfylly !" });
 });
+
+//  logic For  fetch all colors
+// @-desc-  fetch colors
+// @route - api/color/
+// @access  public
+
+export const getAllColors = expressAsyncHandler(async (req, res) => {
+  const AllColors = await colorModel.find({});
+
+  if (!AllColors) {
+    throw new Error("No Exisiting Colors !");
+  }
+  res.json({ status: "success", colors: AllColors });
+});
