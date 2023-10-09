@@ -83,3 +83,21 @@ export const updateBrand = expressAsyncHandler(async (req, res) => {
     updateBrand,
   });
 });
+
+//  logic For  delete brand
+// @-desc-  delete brand
+// @route - api/brand/:id
+// @access  private/Admin
+
+export const deleteBrand = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const isDeleted = await brandModel.findByIdAndDelete(_id);
+
+  if (!isDeleted) {
+    throw new Error(" Brand Already Deleted or Dosn't Exist !");
+  }
+  res.json({
+    status: "success",
+    message: "brand Seccessfully deleted!",
+  });
+});
