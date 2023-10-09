@@ -59,3 +59,27 @@ export const getSingleColor = expressAsyncHandler(async (req, res) => {
     color: SingleColor,
   });
 });
+
+//  logic For  update color
+// @-desc-  update color
+// @route - api/brand/color/:id
+// @access  private/Admin
+
+export const updateColor = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const { name } = req.body;
+  const exisitedColor = await colorModel.findByIdAndUpdate(
+    _id,
+    { name },
+    { new: true }
+  );
+
+  if (!exisitedColor) {
+    throw new Error(" Brand not Found !");
+  }
+  res.json({
+    status: "success",
+    message: "brand Seccessfully updated!",
+    exisitedColor,
+  });
+});
