@@ -11,7 +11,7 @@ export const createBrand = expressAsyncHandler(async (req, res) => {
   }
 
   const brand = await brandModel.create({
-    name,
+    name: name.toLowerCase(),
     user: req.AuthUserId,
   });
   if (!brand) {
