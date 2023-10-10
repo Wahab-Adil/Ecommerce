@@ -22,6 +22,5 @@ export const createReview = expressAsyncHandler(async (req, res) => {
   productFound.reviews.push(newReview?._id);
   await productFound.save();
 
-  const productWithReviewed = productFound.reviews.push();
   res.json({ status: "success", newReview });
 });
