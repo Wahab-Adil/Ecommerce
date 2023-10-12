@@ -8,9 +8,20 @@ import productModel from "../models/product.js";
 export const createReview = expressAsyncHandler(async (req, res) => {
   const { productId } = req.params;
   const { message, rating } = req.body;
-  const productFound = await productModel.findOne({ _id: productId });
+  const productFound = await productModel
+    .findById({ _id: productId })
+    .populate("reviews");
   if (!productFound) {
     throw new Error("Product Not found or deos-not exist");
+  }
+
+  const hasReviewed = productFound?.reviews?.find((review) => {
+    console.log(review);
+    return review?.user?.toString() === req?.AuthUserId?.toString();
+  });
+
+  if (hasReviewed) {
+    throw new Error("you already reviewed this product !");
   }
 
   const newReview = await ReviewsModel.create({
