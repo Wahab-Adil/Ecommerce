@@ -12,12 +12,6 @@ const ColorSchema = new Schema({
     required: true,
     ref: "User",
   },
-  products: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: "product",
-    },
-  ],
 });
 
 const ColorShema = mongoose.model("Color", ColorSchema);
