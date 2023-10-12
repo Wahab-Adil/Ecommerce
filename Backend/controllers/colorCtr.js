@@ -24,6 +24,7 @@ export const createColor = expressAsyncHandler(async (req, res) => {
   res.json({ status: "success", message: "Color created successfylly !" });
 });
 
+
 //  logic For  fetch all colors
 // @-desc-  fetch colors
 // @route - api/color/
@@ -101,3 +102,4 @@ export const deleteColor = expressAsyncHandler(async (req, res) => {
     message: "color Seccessfully deleted!",
   });
 });
+
