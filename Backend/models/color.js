@@ -20,5 +20,5 @@ const ColorSchema = new Schema({
   ],
 });
 
-const ColorShema = mongoose.model("Brand", ColorSchema);
+const ColorShema = mongoose.model("Color", ColorSchema);
 export default ColorShema;

@@ -28,7 +28,7 @@ app.use("/api/user/", userRoutes);
 app.use("/api/product/", productRouter);
 app.use("/api/category/", categoryRouter);
 app.use("/api/brand/", brandRouter);
-app.use("/api/collor/", colorRouter);
+app.use("/api/color/", colorRouter);
 
 // catching Errors
 app.use(notFoundErrHandler);

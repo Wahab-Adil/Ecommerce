@@ -24,7 +24,6 @@ export const createColor = expressAsyncHandler(async (req, res) => {
   res.json({ status: "success", message: "Color created successfylly !" });
 });
 
-
 //  logic For  fetch all colors
 // @-desc-  fetch colors
 // @route - api/color/
@@ -49,7 +48,9 @@ export const getSingleColor = expressAsyncHandler(async (req, res) => {
   if (_id === undefined) {
     throw new Error(" please Mention Color Name!");
   }
-  const SingleColor = await brandModel.findOne({ _id });
+
+  const SingleColor = await colorModel.findOne({ _id });
+
 
   if (!SingleColor) {
     throw new Error(" Color does't exist !");
@@ -102,4 +103,5 @@ export const deleteColor = expressAsyncHandler(async (req, res) => {
     message: "color Seccessfully deleted!",
   });
 });
+
 
