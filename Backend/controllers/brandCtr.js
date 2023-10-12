@@ -68,19 +68,19 @@ export const getSingleBrand = expressAsyncHandler(async (req, res) => {
 export const updateBrand = expressAsyncHandler(async (req, res) => {
   const _id = req.params.id;
   const { name } = req.body;
-  const exisitedBrand = await brandModel.findByIdAndUpdate(
+  const newBrand = await brandModel.findByIdAndUpdate(
     _id,
     { name },
     { new: true }
   );
 
-  if (!exisitedBrand) {
+  if (!newBrand) {
     throw new Error(" Brand not Found !");
   }
   res.json({
     status: "success",
     message: "brand Seccessfully updated!",
-    updateBrand,
+    brand: newBrand,
   });
 });
 

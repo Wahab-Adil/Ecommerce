@@ -20,7 +20,7 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
 
   // find Existing category
   const foundCategory = await categoryModel.findOne({
-    name: category,
+    name: category.toLowerCase(),
   });
   // find Existing brand
   const foundBrand = await brandModel.findOne({

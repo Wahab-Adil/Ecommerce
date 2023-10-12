@@ -48,7 +48,9 @@ export const getSingleColor = expressAsyncHandler(async (req, res) => {
   if (_id === undefined) {
     throw new Error(" please Mention Color Name!");
   }
+
   const SingleColor = await colorModel.findOne({ _id });
+
 
   if (!SingleColor) {
     throw new Error(" Color does't exist !");
@@ -83,3 +85,23 @@ export const updateColor = expressAsyncHandler(async (req, res) => {
     color: newColor,
   });
 });
+
+//  logic For  delete color
+// @-desc-  delete color
+// @route - api/color/:id
+// @access  private/Admin
+
+export const deleteColor = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const isDeleted = await colorModel.findByIdAndDelete(_id);
+
+  if (!isDeleted) {
+    throw new Error(" Color Already Deleted or Dosn't Exist !");
+  }
+  res.json({
+    status: "success",
+    message: "color Seccessfully deleted!",
+  });
+});
+
+
