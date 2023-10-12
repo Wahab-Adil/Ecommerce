@@ -15,7 +15,7 @@ Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk2OTE1NTY2LCJleHAiOjE2OTcxNzQ3NjZ9.vHOZAhyXJNqKdLkv5TcyrRGtvSp2p52jAkh0Nl1AFY4
 
 {
-    "message":"this product is good product",
+    "message":"another Review is done",
     "rating":4
 }
 
