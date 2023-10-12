@@ -171,7 +171,7 @@ export const filterProduct = expressAsyncHandler(async (req, res, next) => {
   }
 
   // final result of filterd product
-  const products = await filterdProducts;
+  const products = await filterdProducts.populate("reviews");
 
   res.json({
     status: "success",
@@ -191,7 +191,9 @@ export const filterProduct = expressAsyncHandler(async (req, res, next) => {
 
 export const getSingleProduct = expressAsyncHandler(async (req, res) => {
   const id = req.params.id;
-  const singleProduct = await productModel.findById({ _id: id });
+  const singleProduct = await productModel
+    .findById({ _id: id })
+    .populate("reviews");
   if (!singleProduct) {
     throw new Error("Product not Found");
   }
