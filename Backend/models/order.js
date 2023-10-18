@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import randomGenerater from "../utils/randomGenerater";
+import randomGenerater from "../utils/randomGenerater.js";
 const Schema = mongoose.Schema;
 const OrderSchema = new Schema(
   {
@@ -42,5 +42,5 @@ const OrderSchema = new Schema(
   },
   { timestamps: true }
 );
-const OrderModel = mongoose.Model("Order", OrderSchema);
+const OrderModel = mongoose.model("Order", OrderSchema);
 export default OrderModel;
