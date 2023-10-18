@@ -8,6 +8,7 @@ import categoryRouter from "../routes/categroyRoute.js";
 import brandRouter from "../routes/brandRoute.js";
 import colorRouter from "../routes/colorRoute.js";
 import reviewRouter from "../routes/reviewRoute.js";
+import orderRouter from "../routes/orderRoute.js";
 
 // Error - middalewares
 import {
@@ -31,6 +32,7 @@ app.use("/api/category/", categoryRouter);
 app.use("/api/brand/", brandRouter);
 app.use("/api/color/", colorRouter);
 app.use("/api/review/", reviewRouter);
+app.use("/api/order/", orderRouter);
 
 // catching Errors
 app.use(notFoundErrHandler);

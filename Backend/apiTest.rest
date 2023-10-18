@@ -29,8 +29,8 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2
 
 
 ###
-# fetching single product
-GET   http://localhost:7000/api/product/651afc4de46a7036827fac82
+# fetching getting order
+GET   http://localhost:7000/api/order/
 Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk2OTE1NTY2LCJleHAiOjE2OTcxNzQ3NjZ9.vHOZAhyXJNqKdLkv5TcyrRGtvSp2p52jAkh0Nl1AFY4
 
