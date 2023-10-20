@@ -1,38 +1,325 @@
-# login User
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              USER ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
 
+# register User
+POST  http://localhost:7000/api/user/register
+Content-Type: application/json
+
+{
+    "fullname": "wahab-adil",
+    "email":"test12345@gmail.com",
+    "password":"12345"
+}
+###
+
+# login User
 POST  http://localhost:7000/api/user/login
 Content-Type: application/json
 
-{"email":"wahab.cs238@gmail.com" ,"password":"12345"}
+{
+    "email":"test12345@gmail.com",
+    "password":"12345"
+}
 
 
-
-# create review
 ###
 
-POST  http://localhost:7000/api/review/create/651afc4de46a7036827fac82
+# User profile
+GET   http://localhost:7000/api/user/profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk2OTE1NTY2LCJleHAiOjE2OTcxNzQ3NjZ9.vHOZAhyXJNqKdLkv5TcyrRGtvSp2p52jAkh0Nl1AFY4
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+# ///////////////////////////////////////////////////////////////////////
+
+
+
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              PRODUCT ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
+
+
+###
+# create Product
+POST  http://localhost:7000/api/product/create
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+#  --- Sizes list for product is =["S", "M", "L", "XL", "XXL"],
 
 {
-    "message":"another Review is done",
+    "name":"Product-name", 
+    "description":"Description For Product",
+     "brand":"brand-name", 
+     "category":"category-name", 
+     "sizes":"S",
+     "colors":"Blue",
+      "price":200,
+       "totalQty":100
+}
+###
+
+# update Product
+PUT   http://localhost:7000/api/product/update/65321531bb42bf0740b9e5bd
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+#  --- Sizes list for product is =["S", "M", "L", "XL", "XXL"],
+
+{
+    "name":"updated name of Product", 
+    "description":"updated Description For Product",
+     "brand":"updated Brand-name", 
+     "category":"updated Category name", 
+     "sizes":"XXL",
+     "colors":"green",
+      "price":100,
+       "totalQty":50
+}
+###
+
+###
+#  Single Product
+GET    http://localhost:7000/api/product/65321531bb42bf0740b9e5bd
+
+
+###
+
+#  all Product
+GET    http://localhost:7000/api/product/all
+
+###
+
+#  filtering  Products
+
+# assign your apptions for filtering product that you want
+# like filtering by(name, color,brand, size,category , price(from-to) ),
+# example : (name=helamd)
+###
+
+GET    http://localhost:7000/api/product/?name=helmand
+
+###
+#  delete  Product
+
+DELETE   http://localhost:7000/api/product/delete/65321531bb42bf0740b9e5bd
+
+###
+
+# ///////////////////////////////////////////////////////////////////////
+
+
+
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              BRAND ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
+
+
+###
+# create Brand
+POST  http://localhost:7000/api/brand/create
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+{
+    "name":"brand-name"
+}
+###
+
+# update Brand
+PUT   http://localhost:7000/api/brand/update/653221bb5f5038faa596b8a2
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+{
+    "name":"updated name of Brand"
+}
+###
+
+###
+#  Single Brand
+GET    http://localhost:7000/api/brand/653221bb5f5038faa596b8a2
+
+
+###
+
+#  all Brand
+GET    http://localhost:7000/api/brand/
+
+###
+#  delete  Brand
+
+DELETE   http://localhost:7000/api/brand/653221bb5f5038faa596b8a2
+
+###
+
+# /////////////////////////////////////////////////////////////////
+
+
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              CATEGORY ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
+
+
+###
+# create category
+POST  http://localhost:7000/api/category/create
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+{
+    "name":"category-name"
+}
+###
+
+# update category
+POST    http://localhost:7000/api/category/update/6532236d5f5038faa596b8ac
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+{
+    "name":"updated name of Category"
+}
+###
+
+###
+#  Single Category
+GET    http://localhost:7000/api/category/6532236d5f5038faa596b8ac
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+
+###
+
+#  all category
+GET    http://localhost:7000/api/category/
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+
+###
+#  delete  category
+
+DELETE   http://localhost:7000/api/category/6532236d5f5038faa596b8ac
+
+###
+
+# /////////////////////////////////////////////////////////////////
+
+
+
+
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              COLOR ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
+
+
+###
+# create color
+POST  http://localhost:7000/api/color/create
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+{
+    "name":"color-name"
+}
+###
+
+# update color
+PUT     http://localhost:7000/api/color/update/653224c05f5038faa596b8b5
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+{
+    "name":"updated name of color"
+}
+###
+
+###
+#  Single color
+GET    http://localhost:7000/api/color/653224c05f5038faa596b8b5
+
+
+###
+
+#  all color
+GET    http://localhost:7000/api/color/
+
+
+###
+#  delete  color
+
+DELETE   http://localhost:7000/api/color/653224c05f5038faa596b8b5
+
+###
+
+# /////////////////////////////////////////////////////////////////
+
+# /////////////////////////////////////////////////////////////////
+
+
+
+
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              Review ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
+
+
+###
+# create review
+
+POST  http://localhost:7000/api/review/create/653227015595002725aad49d
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+{
+    "message":"great",
     "rating":4
 }
 
+# /////////////////////////////////////////////////////////////////
+
+# /////////////////////////////////////////////////////////////////
+
+
+
+
+
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              ORDER ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
+
+
 ###
-
-# fetching all Products
-GET   http://localhost:7000/api/product/
-Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk2OTE1NTY2LCJleHAiOjE2OTcxNzQ3NjZ9.vHOZAhyXJNqKdLkv5TcyrRGtvSp2p52jAkh0Nl1AFY4
-
-
-
-###
-# fetching getting order
+# create order
 GET   http://localhost:7000/api/order/
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk2OTE1NTY2LCJleHAiOjE2OTcxNzQ3NjZ9.vHOZAhyXJNqKdLkv5TcyrRGtvSp2p52jAkh0Nl1AFY4
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk3Nzg2MDY4LCJleHAiOjE2OTgwNDUyNjh9.jCWat52oOVCKztnsz2-lsctdC21CW-p8o-mwhp2W9Yw
 
+{
+    "orderItems":[
+        {
+            "_id":"653227015595002725aad49d",
+            "name":"football-shirt",
+            "totalQty":2,
+            "totalQtyBuying":2
+        }
+           ]
+        ,
+    "totalPrice":1200,
+    "shippingAddress":{
+        "firstname":"Adiljan",
+        "postalAddress":"Helmand Afghanistan"
+    } 
 
+}
 
