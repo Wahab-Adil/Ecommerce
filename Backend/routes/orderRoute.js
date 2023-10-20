@@ -5,6 +5,6 @@ import { createOrder } from "../controllers/orderCtr.js";
 
 const orderRouter = express.Router();
 
-orderRouter.get("/", createOrder);
+orderRouter.get("/", isLoggedIn, createOrder);
 
 export default orderRouter;

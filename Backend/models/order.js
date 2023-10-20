@@ -15,7 +15,7 @@ const OrderSchema = new Schema(
     orderNumber: {
       type: String,
       required: true,
-      dafault: randomGenerater(),
+      default: randomGenerater(),
     },
     //   stripe payment
     paymentStatus: {
