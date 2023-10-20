@@ -46,6 +46,11 @@ const productSchema = new Schema(
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
+// getting total reviews in single product
+productSchema.virtual("qtyLeft").get(function () {
+  const product = this;
+  return product?.totalQty - product?.totalSold;
+});
 
 // getting total reviews in single product
 productSchema.virtual("totalReviews").get(function () {
