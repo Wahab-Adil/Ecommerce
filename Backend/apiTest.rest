@@ -31,7 +31,28 @@ Content-Type: application/json
 GET   http://localhost:7000/api/user/profile
 Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+
+###
+
+
+# Update User Shipping Address
+POST    http://localhost:7000/api/user/update/shipping
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk3OTAzNjU2LCJleHAiOjE2OTgxNjI4NTZ9.IRGpL9_3fxN8xg6OPN2xloCoNTT-n2oaCVJDJDK-Tzw
+
+{
+        "firstName":"Wahab",
+        "lastName":"Adil",
+        "address":"Helmand-Afghanistan",
+        "city":"lashkar-gah",
+        "postalCode":"3401",
+        "province":"helmand",
+        "country":"afghanistan",
+        "phone":"0745180238"
+}
 # ///////////////////////////////////////////////////////////////////////
+
+
 
 
 
