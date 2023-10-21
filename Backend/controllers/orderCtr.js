@@ -16,6 +16,10 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
   if (!FoundUser) {
     throw new Error("User not Found !");
   }
+  // checking if user has shipping Address or not
+  if (!FoundUser?.hasShappingAddress) {
+    throw new Error("Please provide shipping Address");
+  }
   // check if order is  Empty
   if (orderItems?.length <= 0) {
     throw new Error("No Order items");
