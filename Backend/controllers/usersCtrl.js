@@ -60,6 +60,53 @@ export const loginUserCtrl = expressHandler(async (req, res) => {
 
 // --------------------------------------------------------
 
+//  logic For shipping Address
+
+// @-desc-  User shipping Address
+// @route - api/user/update/shipping
+// @access  Private
+
+export const updateShippingAddressCtr = expressHandler(async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    address,
+    city,
+    postalCode,
+    province,
+    country,
+    phone,
+  } = req.body;
+  console.log(req.AuthUserId);
+  const UpdatedUser = await userModel.findByIdAndUpdate(
+    { _id: req.AuthUserId },
+    {
+      shippingAddress: {
+        firstName,
+        lastName,
+        address,
+        city,
+        postalCode,
+        province,
+        country,
+        phone,
+      },
+      hasShappingAddress: true,
+    },
+    { new: true }
+  );
+  if (!UpdatedUser) {
+    throw new Error("User was not found");
+  }
+  res.json({
+    success: true,
+    message: "User Shipping Address Updated Successfully !",
+    user: UpdatedUser,
+  });
+});
+
+// --------------------------------------------------------
+
 //  logic For  User profile
 
 // @-desc-  User profile
