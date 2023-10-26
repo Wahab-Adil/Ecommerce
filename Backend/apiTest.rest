@@ -324,7 +324,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2
 # create order
 GET   http://localhost:7000/api/order/
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk3Nzg2MDY4LCJleHAiOjE2OTgwNDUyNjh9.jCWat52oOVCKztnsz2-lsctdC21CW-p8o-mwhp2W9Yw
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk4MzI4ODMzLCJleHAiOjE2OTg1ODgwMzN9.xSXjNcaVBBq5cHi_ksnq-TBZh5VVVialgr72m7o6FWk
 
 {
     "orderItems":[

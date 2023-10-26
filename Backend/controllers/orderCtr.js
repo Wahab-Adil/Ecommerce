@@ -1,7 +1,14 @@
 import expressAsyncHandler from "express-async-handler";
+import dotenv from "dotenv";
 import orderModel from "../models/order.js";
 import User from "../models/User.js";
+import Stripe from "stripe";
 import productModel from "../models/product.js";
+
+// dotenv
+dotenv.config();
+// instance of stripe
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 //  logic For  create order
 // @-desc-  creating order
@@ -52,11 +59,30 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
   await FoundUser.save();
 
   // make payment
-
-  res.json({
-    success: true,
-    message: "Order Created !",
-    order,
-    user: FoundUser,
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "Product Name",
+            description: "About Product",
+          },
+          unit_amount: 10 * 100,
+        },
+        quantity: 12,
+      },
+    ],
+    mode: "payment",
+    success_url: "http://localhost:3000/success",
+    cancel_url: "http://localhost:3000/cancel",
   });
+  res.send({ url: session.url });
+  console.log();
+  // res.json({
+  //   success: true,
+  //   message: "Order Created !",
+  //   order,
+  //   user: FoundUser,
+  // });
 });
