@@ -23,9 +23,6 @@ const app = express();
 // env config
 dotenv.config();
 
-// middlewares
-app.use(express.json());
-
 // instance of Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -63,6 +60,9 @@ app.post(
     response.send();
   }
 );
+
+// middlewares
+app.use(express.json());
 
 // routes
 app.use("/api/user/", userRoutes);
