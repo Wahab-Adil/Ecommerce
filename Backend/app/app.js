@@ -26,15 +26,6 @@ dotenv.config();
 // middlewares
 app.use(express.json());
 
-// routes
-app.use("/api/user/", userRoutes);
-app.use("/api/product/", productRouter);
-app.use("/api/category/", categoryRouter);
-app.use("/api/brand/", brandRouter);
-app.use("/api/color/", colorRouter);
-app.use("/api/review/", reviewRouter);
-app.use("/api/order/", orderRouter);
-
 // instance of Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -72,6 +63,15 @@ app.post(
     response.send();
   }
 );
+
+// routes
+app.use("/api/user/", userRoutes);
+app.use("/api/product/", productRouter);
+app.use("/api/category/", categoryRouter);
+app.use("/api/brand/", brandRouter);
+app.use("/api/color/", colorRouter);
+app.use("/api/review/", reviewRouter);
+app.use("/api/order/", orderRouter);
 
 // catching Errors
 app.use(notFoundErrHandler);
