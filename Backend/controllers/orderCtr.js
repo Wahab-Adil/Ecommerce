@@ -90,3 +90,20 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
   //   user: FoundUser,
   // });
 });
+
+export const fetchAllOrders = expressAsyncHandler(async (req, res) => {
+  const findAllOrders = await orderModel.find();
+  if (findAllOrders.length <= 0) {
+    res.json({
+      success: false,
+      message: "No orders Found",
+      orders: findAllOrders,
+    });
+  }
+
+  res.json({
+    success: true,
+    message: "All Orders All fetched",
+    order: findAllOrders,
+  });
+});
