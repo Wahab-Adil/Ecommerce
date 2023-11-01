@@ -58,21 +58,25 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
   FoundUser.orders.push(order);
   await FoundUser.save();
 
+  const convertedOrder = orderItems.map((item) => {
+    return {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: "Product Name",
+          description: "About Product",
+        },
+        unit_amount: 10 * 100,
+      },
+      quantity: 12,
+    };
+  });
   // make payment
   const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: "Product Name",
-            description: "About Product",
-          },
-          unit_amount: 10 * 100,
-        },
-        quantity: 12,
-      },
-    ],
+    line_items: convertedOrder,
+    metadata: {
+      orderId: JSON.stringify(order?._id),
+    },
     mode: "payment",
     success_url: "http://localhost:3000/success",
     cancel_url: "http://localhost:3000/cancel",
