@@ -107,3 +107,14 @@ export const fetchAllOrders = expressAsyncHandler(async (req, res) => {
     order: findAllOrders,
   });
 });
+
+export const fetchSingleOrder = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const SingleOrder = await orderModel.findById(_id);
+  console.log(_id);
+  res.json({
+    success: true,
+    message: "single Order fetched",
+    order: SingleOrder,
+  });
+});
