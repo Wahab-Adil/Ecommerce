@@ -5,7 +5,7 @@ import { createOrder, fetchAllOrders } from "../controllers/orderCtr.js";
 
 const orderRouter = express.Router();
 
-orderRouter.post("/", isLoggedIn, createOrder);
+orderRouter.post("/create", isLoggedIn, createOrder);
 orderRouter.get("/", isLoggedIn, fetchAllOrders);
 
 export default orderRouter;
