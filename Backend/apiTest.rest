@@ -351,5 +351,11 @@ GET   http://localhost:7000/api/order/
 Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk4ODI1MTAwLCJleHAiOjE2OTkwODQzMDB9.8wFnFylSzd-KFHDiHMtd6nwxsRn3FRr-ugqSP_5UHzM
 
+###
+# fetch Single Order
+GET   http://localhost:7000/api/order/6542665106c82998572c1571
+Content-Type: application/json
+
+
 
 
