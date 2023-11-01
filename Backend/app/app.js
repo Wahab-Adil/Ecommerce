@@ -52,13 +52,14 @@ app.post(
       return;
     }
     if (event.type === "checkout.session.completed") {
+      // getting from stripe the Status
       const session = event.data.object;
       const { orderId } = session.metadata;
       const paymentStatus = session.payment_status;
       const paymentMethod = session.payment_method_types[0];
       const totalAmount = session.amount_total;
       const currency = session.currency;
-      // find Order
+      // find Order and Updating With Stripe Details that give with 200 status
       const Order = await OrderModel.findByIdAndUpdate(
         JSON.parse(orderId),
         {
