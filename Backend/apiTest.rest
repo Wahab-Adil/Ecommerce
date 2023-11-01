@@ -344,3 +344,12 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMj
 
 }
 
+
+###
+# fetch all orders
+GET   http://localhost:7000/api/order/
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk4ODI1MTAwLCJleHAiOjE2OTkwODQzMDB9.8wFnFylSzd-KFHDiHMtd6nwxsRn3FRr-ugqSP_5UHzM
+
+
+
