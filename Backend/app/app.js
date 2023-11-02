@@ -46,7 +46,7 @@ app.post(
 
     try {
       event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-      console.log(event);
+      console.log("type of Event", event.type);
     } catch (err) {
       response.status(400).send(`Webhook Error: ${err.message}`);
       return;
@@ -59,6 +59,7 @@ app.post(
       const paymentMethod = session.payment_method_types[0];
       const totalAmount = session.amount_total;
       const currency = session.currency;
+      console.log("new Order Id", orderId);
       // find Order and Updating With Stripe Details that give with 200 status
       const Order = await OrderModel.findByIdAndUpdate(
         JSON.parse(orderId),
@@ -70,14 +71,14 @@ app.post(
         },
         { new: true }
       );
+      if (!Order) {
+        res.json({ message: "Order desn't exist !" });
+        return;
+      }
+      response.send({ status: "Success", order: Order });
     } else {
       return;
     }
-    if (!Order) {
-      res.json({ message: "Order desn't exist !" });
-      return;
-    }
-    response.send({ status: "Success", order: Order });
   }
 );
 

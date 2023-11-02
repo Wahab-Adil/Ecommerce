@@ -82,13 +82,7 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
     cancel_url: "http://localhost:3000/cancel",
   });
   res.send({ url: session.url });
-  console.log();
-  // res.json({
-  //   success: true,
-  //   message: "Order Created !",
-  //   order,
-  //   user: FoundUser,
-  // });
+  console.log("order id", order._id);
 });
 
 export const fetchAllOrders = expressAsyncHandler(async (req, res) => {
