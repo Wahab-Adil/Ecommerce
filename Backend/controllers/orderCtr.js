@@ -85,6 +85,11 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
   console.log("order id", order._id);
 });
 
+//  logic For  fetch all orders
+// @-desc-  fetching orders
+// @route - api/order/
+// @access  Private/Admin
+
 export const fetchAllOrders = expressAsyncHandler(async (req, res) => {
   const findAllOrders = await orderModel.find();
   if (findAllOrders.length <= 0) {
@@ -102,13 +107,48 @@ export const fetchAllOrders = expressAsyncHandler(async (req, res) => {
   });
 });
 
+//  logic For  fetch single order
+// @-desc-  fetching order
+// @route - api/order/:id
+// @access  Private/Admin
 export const fetchSingleOrder = expressAsyncHandler(async (req, res) => {
   const _id = req.params.id;
   const SingleOrder = await orderModel.findById(_id);
-  console.log(_id);
+  if (!SingleOrder) {
+    return res.json({
+      success: true,
+      message: "single Order fetched",
+      order: SingleOrder,
+    });
+  }
   res.json({
     success: true,
     message: "single Order fetched",
     order: SingleOrder,
+  });
+});
+
+// @-desc-  update order to delivered
+// @route - api/order/update/:id
+// @access  Private/Admin
+export const updateOrderCtr = expressAsyncHandler(async (req, res) => {
+  const _id = req.params.id;
+  const updatedOrder = await orderModel.findByIdAndUpdate(
+    _id,
+    {
+      status: req.body.status,
+    },
+    { new: true }
+  );
+  if (!updatedOrder) {
+    return res.json({
+      success: false,
+      message: "Order not Found !",
+    });
+  }
+  res.json({
+    success: true,
+    message: "Order updated",
+    order: updatedOrder,
   });
 });
