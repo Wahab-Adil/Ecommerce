@@ -43,7 +43,6 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
   const AllProducts = await productModel.find({
     _id: { $in: orderItems },
   });
-  console.log(AllProducts);
   orderItems?.find(async (order) => {
     const matchedProduct = AllProducts?.find((product) => {
       return product?._id.toString() === order?._id.toString();
@@ -82,7 +81,6 @@ export const createOrder = expressAsyncHandler(async (req, res) => {
     cancel_url: "http://localhost:3000/cancel",
   });
   res.send({ url: session.url });
-  console.log("order id", order._id);
 });
 
 //  logic For  fetch all orders

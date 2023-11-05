@@ -59,7 +59,6 @@ app.post(
       const paymentMethod = session.payment_method_types[0];
       const totalAmount = session.amount_total;
       const currency = session.currency;
-      console.log("new Order Id", orderId);
       // find Order and Updating With Stripe Details that give with 200 status
       const Order = await OrderModel.findByIdAndUpdate(
         JSON.parse(orderId),

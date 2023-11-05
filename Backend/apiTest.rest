@@ -38,7 +38,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2
 # Update User Shipping Address
 POST    http://localhost:7000/api/user/update/shipping
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk3OTAzNjU2LCJleHAiOjE2OTgxNjI4NTZ9.IRGpL9_3fxN8xg6OPN2xloCoNTT-n2oaCVJDJDK-Tzw
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk4OTM3NTAzLCJleHAiOjE2OTkxOTY3MDN9.PTiiYR7k_6bVyxNYsNTzuHvJ4WEVN0fG4CguP8JNR7k
 
 {
         "firstName":"Wahab",
@@ -322,9 +322,9 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2
 
 ###
 # create order
-GET   http://localhost:7000/api/order/
+POST    http://localhost:7000/api/order/create
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk4NTk2MzQyLCJleHAiOjE2OTg4NTU1NDJ9.C1du94XCaZHWTd6IxxjvvlbFKiyoeW9bpd0AM4L9Qn0
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5MjAzNjE2LCJleHAiOjE2OTk0NjI4MTZ9.gZq2j7UM2uny9eep--QSoOech-bezRQIfqVlGMLVJng
 
 {
     "orderItems":[
@@ -336,7 +336,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMj
         }
            ]
         ,
-    "totalPrice":1200,
+    "totalPrice":1500,
     "shippingAddress":{
         "firstname":"Adiljan",
         "postalAddress":"Helmand Afghanistan"
@@ -353,7 +353,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMj
 
 ###
 # fetch Single Order
-GET   http://localhost:7000/api/order/65426fb4b65fbac6d01e924e
+GET   http://localhost:7000/api/order/6547da5d0c367795d89e8086
 Content-Type: application/json
 
 ###
