@@ -114,5 +114,9 @@ export const updateShippingAddressCtr = expressHandler(async (req, res) => {
 // @access  Public
 export const userProfileCtrl = expressHandler(async (req, res) => {
   const AllOrders = await userModel.findById(req.AuthUserId).populate("orders");
-  res.json({ success: true, orders: AllOrders });
+  res.json({
+    success: true,
+    message: "Orders Successfully Fetched !",
+    orders: AllOrders,
+  });
 });
