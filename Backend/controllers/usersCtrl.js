@@ -113,5 +113,6 @@ export const updateShippingAddressCtr = expressHandler(async (req, res) => {
 // @route - api/user/profile
 // @access  Public
 export const userProfileCtrl = expressHandler(async (req, res) => {
-  res.json("welcome to profile page");
+  const AllOrders = await userModel.findById(req.AuthUserId).populate("orders");
+  res.json({ success: true, orders: AllOrders });
 });
