@@ -30,7 +30,7 @@ Content-Type: application/json
 # User profile
 GET   http://localhost:7000/api/user/profile
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5NDYwOTc4LCJleHAiOjE2OTk3MjAxNzh9.DvpE6hqRxTbQ3CIxgB1hqh5XmbY8aILO-ZMGOmRpvjE
 
 ###
 
