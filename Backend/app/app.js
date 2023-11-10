@@ -14,6 +14,7 @@ import brandRouter from "../routes/brandRoute.js";
 import colorRouter from "../routes/colorRoute.js";
 import reviewRouter from "../routes/reviewRoute.js";
 import orderRouter from "../routes/orderRoute.js";
+import coupenRouter from "../routes/coupenRoute.js";
 
 // Models
 import OrderModel from "../models/order.js";
@@ -92,6 +93,7 @@ app.use("/api/brand/", brandRouter);
 app.use("/api/color/", colorRouter);
 app.use("/api/review/", reviewRouter);
 app.use("/api/order/", orderRouter);
+app.use("/api/coupen/", coupenRouter);
 
 // catching Errors
 app.use(notFoundErrHandler);
