@@ -366,3 +366,31 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMj
 
 
 
+# /////////////////////////////////////////////////////////////////
+
+# /////////////////////////////////////////////////////////////////
+
+
+
+
+
+# ______________________________________________________________________
+# ______________________________________________________________________
+#                              COUPEN ROUTES 
+# ______________________________________________________________________
+# ______________________________________________________________________
+
+
+###
+# create coupen
+POST    http://localhost:7000/api/coupen/create
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5NjI3MTAzLCJleHAiOjE2OTk4ODYzMDN9.WDLMEEl68Un6XUhaID3SBFp8NcTgcv23i7rzSFruD-c
+
+{
+"code":"new sale",
+"startDate":"02-20-2023",
+"endDate":"03-20-2023",
+"discount":50
+
+}
