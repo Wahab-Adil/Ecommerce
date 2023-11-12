@@ -30,3 +30,16 @@ export const createCoupen = expressAsyncHandler(async (req, res) => {
     coupen: createdCoupen,
   });
 });
+
+//  logic For  get all coupons
+// @-desc-  get all coupons
+// @route - api/coupen/
+// @access  Private/Admin
+export const getAllCoupons = expressAsyncHandler(async (req, res) => {
+  const AllCoupons = await coupenModel.find();
+  res.json({
+    success: true,
+    message: "coupen fetched  successfylly !",
+    coupens: AllCoupons,
+  });
+});
