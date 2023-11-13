@@ -396,7 +396,34 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMj
 }
 
 ###
-# get aall coupons
+# update coupen
+PUT     http://localhost:7000/api/coupen/update/6550efb2963e076babc22a9c
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5ODkxNzU1LCJleHAiOjE3MDAxNTA5NTV9.R7W_r2EMnvd1oQgcIxqn44SVVK_Zs-sbyZwmmvmoTIM
+
+{
+"code":"adiljan",
+"startDate":"11-20-2023",
+"endDate":"12-20-2023",
+"discount":22
+
+}
+
+###
+# get all coupons
 GET     http://localhost:7000/api/coupen/
 Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5NjI3MTAzLCJleHAiOjE2OTk4ODYzMDN9.WDLMEEl68Un6XUhaID3SBFp8NcTgcv23i7rzSFruD-c
+
+###
+# get single coupon
+GET     http://localhost:7000/api/coupen/6550efb2963e076babc22a9c
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5ODkxNzU1LCJleHAiOjE3MDAxNTA5NTV9.R7W_r2EMnvd1oQgcIxqn44SVVK_Zs-sbyZwmmvmoTIM
+
+
+###
+# delete single coupon
+DELETE      http://localhost:7000/api/coupen/6550efb2963e076babc22a9c
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5ODkxNzU1LCJleHAiOjE3MDAxNTA5NTV9.R7W_r2EMnvd1oQgcIxqn44SVVK_Zs-sbyZwmmvmoTIM

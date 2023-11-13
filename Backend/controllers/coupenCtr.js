@@ -43,3 +43,65 @@ export const getAllCoupons = expressAsyncHandler(async (req, res) => {
     coupens: AllCoupons,
   });
 });
+
+//  logic For  get single  coupon
+// @-desc-  get single coupon
+// @route - api/coupen/:id
+// @access  Private/Admin
+export const getSingleCoupon = expressAsyncHandler(async (req, res) => {
+  const SingleCoupon = await coupenModel.findById(req.params.id);
+  if (!SingleCoupon) {
+    throw new Error("Coupon not Found !");
+  }
+  res.json({
+    success: true,
+    message: "coupen fetched  successfylly !",
+    coupen: SingleCoupon,
+  });
+});
+
+//  logic For  delete single  coupon
+// @-desc-  delete single coupon
+// @route - api/coupen/:id
+// @access  Private/Admin
+export const deleteCoupon = expressAsyncHandler(async (req, res) => {
+  const deletedCoupon = await coupenModel.findByIdAndDelete(req.params.id, {
+    new: true,
+  });
+  if (!deletedCoupon) {
+    throw new Error("Coupon Already deleted or desnt exist");
+  }
+
+  res.json({
+    success: true,
+    message: "coupon deleted successfylly !",
+  });
+});
+
+//  logic For  update single  coupon
+// @-desc-  update single coupon
+// @route - api/coupen/:id
+// @access  Private/Admin
+export const updateCoupon = expressAsyncHandler(async (req, res) => {
+  const { code, startDate, endDate, discount } = req.body;
+  const updatedCoupon = await coupenModel.findByIdAndUpdate(
+    req.params.id,
+    {
+      code,
+      startDate,
+      endDate,
+      discount,
+    },
+    {
+      new: true,
+    }
+  );
+  if (!updatedCoupon) {
+    throw new Error("Coupon not updated !");
+  }
+  res.json({
+    success: true,
+    message: "coupen Updated successfylly !",
+    coupen: updatedCoupon,
+  });
+});
