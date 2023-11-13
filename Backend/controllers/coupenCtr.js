@@ -18,7 +18,7 @@ export const createCoupen = expressAsyncHandler(async (req, res) => {
   }
 
   const createdCoupen = await coupenModel.create({
-    code,
+    code: code.toUpperCase(),
     startDate,
     endDate,
     discount,
