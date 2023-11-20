@@ -15,7 +15,6 @@ const categorySchema = Schema(
     },
     image: {
       type: String,
-      default: "https://picsum.photos/200/300",
       required: true,
     },
     products: [{ type: mongoose.Types.ObjectId, ref: "product" }],

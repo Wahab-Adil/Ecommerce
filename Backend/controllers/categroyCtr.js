@@ -17,6 +17,7 @@ export const createCategory = expressAsyncHandler(async (req, res) => {
   const createdCategory = await categoryModel.create({
     name: name.toLowerCase(),
     user: req.AuthUserId,
+    image: req.file.path,
   });
 
   if (!createdCategory) {
