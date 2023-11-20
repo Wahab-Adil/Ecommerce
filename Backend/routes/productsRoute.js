@@ -8,10 +8,16 @@ import {
   deleteProduct,
 } from "../controllers/productCtr.js";
 import isLoggedIn from "../middlewares/isloggedIn.js";
+import upload from "../config/fileUpload.js";
 
 const productRouter = express.Router();
 // create product
-productRouter.post("/create", isLoggedIn, createProductCtr);
+productRouter.post(
+  "/create",
+  isLoggedIn,
+  upload.array("files"),
+  createProductCtr
+);
 // update product
 productRouter.put("/update/:id", isLoggedIn, updateProduct);
 // get single product
