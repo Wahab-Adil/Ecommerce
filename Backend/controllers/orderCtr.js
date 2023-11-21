@@ -165,3 +165,56 @@ export const updateOrderCtr = expressAsyncHandler(async (req, res) => {
     order: updatedOrder,
   });
 });
+
+// @-desc-  sum of sales of orders
+// @route - api/order/sales/sum
+// @access  Private/Admin
+export const getOrderStatsCtr = expressAsyncHandler(async (req, res) => {
+  const orderStatistics = await orderModel.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalSale: {
+          $sum: "$totalPrice",
+        },
+        minimumSale: {
+          $min: "$totalPrice",
+        },
+        avgSale: {
+          $avg: "$totalPrice",
+        },
+        maximumSale: {
+          $max: "$totalPrice",
+        },
+      },
+    },
+  ]);
+
+  const date = new Date();
+  const today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  const todaySales = await orderModel.aggregate([
+    {
+      $match: {
+        createdAt: {
+          gte: today,
+        },
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        totalSales: {
+          $sum: "$totalPrice",
+        },
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    success: true,
+    message: "Order Statistics",
+    orderStatistics,
+    todaySales,
+  });
+});
