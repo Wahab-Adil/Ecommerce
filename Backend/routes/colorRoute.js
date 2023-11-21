@@ -8,16 +8,14 @@ import {
   updateColor,
   deleteColor,
 } from "../controllers/colorCtr.js";
-
+import isAdmin from "../middlewares/isAdmin.js";
 
 const colorRouter = express.Router();
 
-colorRouter.post("/create", isLoggedIn, createColor);
+colorRouter.post("/create", isLoggedIn, isAdmin, createColor);
 colorRouter.get("/", getAllColors);
 colorRouter.get("/:id", getSingleColor);
-colorRouter.put("/update/:id", updateColor);
-colorRouter.delete("/:id", deleteColor);
-
-
+colorRouter.put("/update/:id", isLoggedIn, isAdmin, updateColor);
+colorRouter.delete("/:id", isLoggedIn, isAdmin, deleteColor);
 
 export default colorRouter;

@@ -7,13 +7,14 @@ import {
   updateBrand,
   deleteBrand,
 } from "../controllers/brandCtr.js";
+import isAdmin from "../middlewares/isAdmin.js";
 
 const brandRouter = express.Router();
 
-brandRouter.post("/create", isLoggedIn, createBrand);
+brandRouter.post("/create", isLoggedIn, isAdmin, createBrand);
 brandRouter.get("/", getAllBrands);
 brandRouter.get("/:id", getSingleBrand);
-brandRouter.put("/update/:id", updateBrand);
-brandRouter.delete("/:id", deleteBrand);
+brandRouter.put("/update/:id", isLoggedIn, isAdmin, updateBrand);
+brandRouter.delete("/:id", isLoggedIn, isAdmin, deleteBrand);
 
 export default brandRouter;
