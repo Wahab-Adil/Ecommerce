@@ -24,6 +24,19 @@ Content-Type: application/json
     "password":"12345"
 }
 
+###
+
+# change password
+
+POST  http://localhost:7000/api/user/changepassword
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAwNzQzMDk3LCJleHAiOjE3MDEwMDIyOTd9.LF_gO7dlVBn_NgZaATDVLF_bgHnqm77wbkwhn8k9RW4
+
+{
+    "prevPassword":"22",
+    "newPassword":"54321"
+}
+
 
 ###
 
