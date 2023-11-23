@@ -60,6 +60,48 @@ export const loginUserCtrl = expressHandler(async (req, res) => {
 
 // --------------------------------------------------------
 
+//  logic For  change password
+
+// @-desc-  change password
+// @route - api/user/changepassword
+// @access  Public
+export const changepassword = expressHandler(async (req, res) => {
+  const { prevPassword, newPassword } = req.body;
+
+  const isExistUser = await userModel.findById(req.AuthUserId);
+
+  if (!isExistUser) {
+    throw new Error("User not Found !");
+  }
+  const isMatchPassword = await bcrypt.compare(
+    prevPassword,
+    isExistUser?.password
+  );
+  if (!isMatchPassword) {
+    throw new Error("password does not matching !");
+  }
+  if (isExistUser && isMatchPassword) {
+    // generate salt
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+    await userModel.findByIdAndUpdate(
+      req.AuthUserId,
+      {
+        password: hashedPassword,
+      },
+      {
+        new: true,
+      }
+    );
+    res.json({
+      success: true,
+      message: "password Successfully changed !",
+    });
+  }
+});
+
+// --------------------------------------------------------
+
 //  logic For shipping Address
 
 // @-desc-  User shipping Address
