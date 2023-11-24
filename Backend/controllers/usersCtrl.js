@@ -45,7 +45,7 @@ export const loginUserCtrl = expressHandler(async (req, res) => {
   const { email, password } = req.body;
 
   const isExistUser = await userModel.findOne({ email });
-  const isMatchPassword = await bcrypt.compare(password, isExistUser?.password);
+  const isMatchPassword = bcrypt.compare(password, isExistUser?.password);
 
   if (isExistUser && isMatchPassword) {
     res.status(302).json({
