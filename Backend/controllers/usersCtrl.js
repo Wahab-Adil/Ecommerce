@@ -140,7 +140,7 @@ export const sendEmail = expressHandler(async (req, res) => {
   });
   res.json({
     success: true,
-    message: "email Successfully send !",
+    message: "check your mail-box for otp !",
   });
 });
 
