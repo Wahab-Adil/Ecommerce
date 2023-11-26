@@ -2,6 +2,10 @@ import userModel from "../models/User.js";
 import bcrypt from "bcryptjs";
 import expressHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
+import nodemailer from "nodemailer";
+import generateOtp from "../utils/generateOtp.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 // logic for user Registeration
 
@@ -98,6 +102,46 @@ export const changepassword = expressHandler(async (req, res) => {
       message: "password Successfully changed !",
     });
   }
+});
+
+// --------------------------------------------------------
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: false,
+  auth: {
+    user: process.env.SMTP_EMAIL,
+    pass: process.env.SMTP_PASSWORD,
+  },
+});
+
+//  logic For  sending  Email
+
+// @-desc-  send  email
+// @route - api/user/sendemail
+// @access  Public
+export const sendEmail = expressHandler(async (req, res) => {
+  const { email } = req.body;
+  const otp = generateOtp();
+
+  const mailOptions = {
+    from: process.env.SMTP_EMAIL,
+    to: email,
+    subject: "Afghan-Ecommerce",
+    text: `your otp code is = ${otp}`,
+  };
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Email send successfully !");
+    }
+  });
+  res.json({
+    success: true,
+    message: "email Successfully send !",
+  });
 });
 
 // --------------------------------------------------------
