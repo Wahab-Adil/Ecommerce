@@ -135,7 +135,7 @@ export const sendEmail = expressHandler(async (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("Email send successfully !");
+      console.log("check mail-box for otp !");
     }
   });
   res.json({
