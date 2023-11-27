@@ -141,6 +141,31 @@ export const sendOtpToEmail = expressHandler(async (req, res) => {
   });
 });
 
+//  logic For  resending otp to Email
+
+// @-desc-  resend otp to  email
+// @route - api/user/resendotp
+// @access  Public
+export const resendOtpToEmail = expressHandler(async (req, res) => {
+  const { email } = req.body;
+  const otp = generateOtp(req);
+  const mailOptions = {
+    from: process.env.SMTP_EMAIL,
+    to: email,
+    subject: "Afghan-Ecommerce",
+    text: `your new otp code is = ${otp}`,
+  };
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      return err;
+    }
+  });
+  res.json({
+    success: true,
+    message: "check your mail-box for otp !",
+  });
+});
+
 // --------------------------------------------------------
 
 //  logic For shipping Address
