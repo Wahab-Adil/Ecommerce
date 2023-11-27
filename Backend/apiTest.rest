@@ -49,6 +49,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzM
     "email":"wahab.cs238@gmail.com"
 }
 
+###
+
+# resend email
+
+POST  http://localhost:7000/api/user/sendemail
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAwNzQzMDk3LCJleHAiOjE3MDEwMDIyOTd9.LF_gO7dlVBn_NgZaATDVLF_bgHnqm77wbkwhn8k9RW4
+
+{
+    "email":"wahab.cs238@gmail.com"
+}
+
+
 
 
 ###

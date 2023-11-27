@@ -6,7 +6,8 @@ import {
   userProfileCtrl,
   updateShippingAddressCtr,
   changepassword,
-  sendEmail,
+  sendOtpToEmail,
+  resendOtpToEmail,
 } from "../controllers/usersCtrl.js";
 
 const userRoutes = express.Router();
@@ -14,7 +15,8 @@ const userRoutes = express.Router();
 userRoutes.post("/register", registerUserCtrl);
 userRoutes.post("/login", loginUserCtrl);
 userRoutes.post("/changepassword", isLoggedIn, changepassword);
-userRoutes.post("/sendemail", sendEmail);
+userRoutes.post("/sendemail", sendOtpToEmail);
+userRoutes.post("/resendotp", resendOtpToEmail);
 userRoutes.post("/update/shipping", isLoggedIn, updateShippingAddressCtr);
 userRoutes.get("/profile", isLoggedIn, userProfileCtrl);
 
