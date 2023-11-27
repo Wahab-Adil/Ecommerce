@@ -121,10 +121,9 @@ const transporter = nodemailer.createTransport({
 // @-desc-  send  email
 // @route - api/user/sendemail
 // @access  Public
-export const sendEmail = expressHandler(async (req, res) => {
+export const sendOtpToEmail = expressHandler(async (req, res) => {
   const { email } = req.body;
-  const otp = generateOtp();
-
+  const otp = generateOtp(req);
   const mailOptions = {
     from: process.env.SMTP_EMAIL,
     to: email,
@@ -133,9 +132,7 @@ export const sendEmail = expressHandler(async (req, res) => {
   };
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
-      console.log(err);
-    } else {
-      console.log("check mail-box for otp !");
+      return err;
     }
   });
   res.json({
