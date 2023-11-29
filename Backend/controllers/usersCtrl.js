@@ -4,6 +4,7 @@ import expressHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import nodemailer from "nodemailer";
 import generateOtp from "../utils/generateOtp.js";
+import store from "store";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -106,6 +107,46 @@ export const changepassword = expressHandler(async (req, res) => {
 
 // --------------------------------------------------------
 
+//  logic For  forgot password
+
+// @-desc-  forgot password
+// @route - api/user/forgot-password
+// @access  Public
+export const forgotPossword = expressHandler(async (req, res) => {
+  const { newPassword, confirmPassword } = req.body;
+  if (newPassword !== confirmPassword) {
+    throw new Error("confirm-password deos not matching !");
+  }
+
+  const isExistUser = await userModel.findById(req.AuthUserId);
+
+  if (!isExistUser) {
+    throw new Error("User not Found !");
+  }
+  if (isExistUser) {
+    // generate salt
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+    await userModel.findByIdAndUpdate(
+      req.AuthUserId,
+      {
+        password: hashedPassword,
+      },
+      {
+        new: true,
+      }
+    );
+    res.json({
+      success: true,
+      message: "password Successfully changed !",
+    });
+    store.remove("otp");
+    store.remove("userProvidedOtp");
+  }
+});
+
+// --------------------------------------------------------
+
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: process.env.SMTP_PORT,
@@ -124,6 +165,7 @@ const transporter = nodemailer.createTransport({
 export const sendOtpToEmail = expressHandler(async (req, res) => {
   const { email } = req.body;
   const otp = generateOtp(req);
+  store.set("otp", otp);
   const mailOptions = {
     from: process.env.SMTP_EMAIL,
     to: email,
@@ -149,13 +191,14 @@ export const sendOtpToEmail = expressHandler(async (req, res) => {
 export const resendOtpToEmail = expressHandler(async (req, res) => {
   const { email } = req.body;
   const otp = generateOtp(req);
+  store.set("otp", otp);
   const mailOptions = {
     from: process.env.SMTP_EMAIL,
     to: email,
     subject: "Afghan-Ecommerce",
     text: `your new otp code is = ${otp}`,
   };
-  transporter.sendMail(mailOptions, function (err, info) {
+  transporter.sendMail(mailOptions, function (err) {
     if (err) {
       return err;
     }
@@ -164,6 +207,27 @@ export const resendOtpToEmail = expressHandler(async (req, res) => {
     success: true,
     message: "check your mail-box for otp !",
   });
+});
+
+//  logic For  check otp
+
+// @-desc-  check otp
+// @route - api/user/checkotp
+// @access  Public
+export const checkUserOtp = expressHandler(async (req, res) => {
+  const { userotp } = req.body;
+  store.set("userProvidedOtp", userotp);
+  if (!store.get("otp")) {
+    throw new Error("Please first send otp to your email then check!");
+  }
+  if (store?.get("otp") === store?.get("userProvidedOtp")) {
+    res.json({
+      success: true,
+      message: "otp accepted !",
+    });
+  } else {
+    throw new Error("Please provide correct otp!");
+  }
 });
 
 // --------------------------------------------------------
