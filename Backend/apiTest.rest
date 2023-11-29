@@ -27,14 +27,26 @@ Content-Type: application/json
 ###
 
 # change password
-
 POST  http://localhost:7000/api/user/changepassword
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAwNzQzMDk3LCJleHAiOjE3MDEwMDIyOTd9.LF_gO7dlVBn_NgZaATDVLF_bgHnqm77wbkwhn8k9RW4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAxMjgyNzY5LCJleHAiOjE3MDE1NDE5Njl9.pLNki_b9LATudpH6IwrpHGHDOZAFOffuRehRV64SiSE
 
 {
-    "prevPassword":"22",
+    "prevPassword":"12345",
     "newPassword":"54321"
+}
+
+###
+
+# forgot password
+POST  http://localhost:7000/api/user/forgot-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAxMjgyNzY5LCJleHAiOjE3MDE1NDE5Njl9.pLNki_b9LATudpH6IwrpHGHDOZAFOffuRehRV64SiSE
+
+
+{
+    "newPassword":"12345",
+    "confirmPassword":"12345"
 }
 
 ###
@@ -52,13 +64,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzM
 ###
 
 # resend email
-
 POST  http://localhost:7000/api/user/sendemail
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAwNzQzMDk3LCJleHAiOjE3MDEwMDIyOTd9.LF_gO7dlVBn_NgZaATDVLF_bgHnqm77wbkwhn8k9RW4
 
 {
     "email":"wahab.cs238@gmail.com"
+}
+
+###
+
+# check otp
+
+POST  http://localhost:7000/api/user/checkotp
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAwNzQzMDk3LCJleHAiOjE3MDEwMDIyOTd9.LF_gO7dlVBn_NgZaATDVLF_bgHnqm77wbkwhn8k9RW4
+
+{
+    "userotp":1198
 }
 
 
