@@ -7,7 +7,7 @@ export default function isLoggedIn(req, res, next) {
   // verify Token
   const verifiedToken = verifyToken(token);
   // inject  decoded user to request
-  if (!verifiedToken) {
+  if (!verifiedToken || !req.oidc.isAuthenticated()) {
     throw new Error("Invalid/Expired token, please login again");
   } else {
     req.AuthUserId = verifiedToken?.payload;
