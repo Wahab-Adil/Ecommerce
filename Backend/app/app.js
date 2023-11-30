@@ -2,6 +2,8 @@
 import express from "express";
 import Stripe from "stripe";
 import dotenv from "dotenv";
+import openIdConnect from "express-openid-connect";
+const auth = openIdConnect.auth;
 
 // connection
 import dbConnection from "../config/dbConnect.js";
@@ -30,6 +32,17 @@ const app = express();
 
 // env config
 dotenv.config();
+
+console.log(process.env.AUTH0_BASEURL);
+// AUTH0 config
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.AUTH0_SECRET,
+  baseURL: process.env.AUTH0_BASEURL,
+  clientID: process.env.AUTHO_CLIENTID,
+  issuerBaseURL: process.env.AUTH0_ISSUERBASEURL,
+};
 
 // instance of Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -84,6 +97,7 @@ app.post(
 
 // middlewares
 app.use(express.json());
+app.use(auth(config));
 
 // endpoints
 app.use("/api/user/", userRoutes);
