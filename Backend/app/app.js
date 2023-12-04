@@ -3,8 +3,8 @@ import express from "express";
 import Stripe from "stripe";
 import dotenv from "dotenv";
 import openIdConnect from "express-openid-connect";
-const auth = openIdConnect.auth;
 
+import request from "request";
 // connection
 import dbConnection from "../config/dbConnect.js";
 
@@ -18,6 +18,7 @@ import reviewRouter from "../routes/reviewRoute.js";
 import orderRouter from "../routes/orderRoute.js";
 import coupenRouter from "../routes/coupenRoute.js";
 
+import store from "store";
 // Models
 import OrderModel from "../models/order.js";
 
@@ -26,9 +27,26 @@ import {
   globalErrorHandler,
   notFoundErrHandler,
 } from "../middlewares/globalErrorHandler.js";
+import isLoggedIn from "../middlewares/isloggedIn.js";
+import jwtCheck from "../utils/jwtCheck.js";
+var options = {
+  method: "POST",
+  url: "https://dev-23plp8g77qjgosw4.us.auth0.com/oauth/token",
+  headers: { "content-type": "application/json" },
+  body: '{"client_id":"2ctbyyUp0M4w6OVobtftceyohnWL1F9Z","client_secret":"mcI0LMssWdExsiAjngmDF7AqJ6ieiJBDitdYKJIejjNpANYAP4F2KBwmOnEdqOz1","audience":"http://localhost:7000","grant_type":"client_credentials"}',
+};
 
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+  else {
+    store.set("auth0_credientials", JSON.parse(body));
+  }
+
+  console.log(JSON.parse(body));
+});
 // calling express
 const app = express();
+const auth = openIdConnect.auth;
 
 // env config
 dotenv.config();
@@ -42,6 +60,12 @@ const config = {
   baseURL: process.env.AUTH0_BASEURL,
   clientID: process.env.AUTHO_CLIENTID,
   issuerBaseURL: process.env.AUTH0_ISSUERBASEURL,
+  clientSecret: process.env.AUth0_CLIENT_SECRET,
+  authorizationParams: {
+    response_type: "code",
+    audience: "http://localhost:7000",
+    scope: "openid profile email",
+  },
 };
 
 // instance of Stripe
@@ -75,7 +99,6 @@ app.post(
       const currency = session.currency;
       // find Order and Updating With Stripe Details that give with 200 status
       const Order = await OrderModel.findByIdAndUpdate(
-        JSON.parse(orderId),
         {
           totalPrice: totalAmount / 100,
           currency,
@@ -108,6 +131,11 @@ app.use("/api/color/", colorRouter);
 app.use("/api/review/", reviewRouter);
 app.use("/api/order/", orderRouter);
 app.use("/api/coupen/", coupenRouter);
+app.use("/", openIdConnect?.requiresAuth(), (req, res, next) => {
+  store.set("Auth0_user", req?.oidc?.user);
+  console.log(req.oidc.user);
+  res.redirect("/register_auto");
+});
 
 // catching Errors
 app.use(notFoundErrHandler);

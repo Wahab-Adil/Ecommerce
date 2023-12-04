@@ -12,7 +12,7 @@ dotenv.config();
 
 // @-desc- Register User
 // @route - api/user/register
-// @access  Private/Admin
+// @access  public/access
 export const registerUserCtrl = expressHandler(async (req, res) => {
   const { fullname, email, password } = req.body;
   const existUser = await userModel.findOne({ email });
@@ -39,6 +39,41 @@ export const registerUserCtrl = expressHandler(async (req, res) => {
   }
 });
 
+// logic for Auth0 user Registeration
+
+// @-desc- Auth0 user Register
+// @route - api/user/auth0/register
+// @access  public/access
+export const registerAuth0User = expressHandler(async (req, res) => {
+  const Auth0_user_Details = store.get("Auth0_user");
+  const { password } = req.body;
+  if (!Auth0_user_Details) {
+    throw new Error("Please LoggedIn/or Invalid credintials");
+  }
+  let existUser;
+  if (Auth0_user_Details?.email) {
+    existUser = await userModel.findOne({
+      email: Auth0_user_Details?.email,
+    });
+  }
+
+  if (existUser) {
+    // throw
+    throw new Error("User Already Exist");
+  }
+  // generate salt
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+  // create new User with hashed password
+  const createdUser = await userModel.create({
+    fullname: Auth0_user_Details?.nickname
+      ? Auth0_user_Details?.nickname
+      : Auth0_user_Details?.given_name + Auth0_user_Details?.family_name,
+    email: Auth0_user_Details?.email,
+    password: hashedPassword,
+  });
+  console.log("created User", createdUser);
+});
 // ---------------------------------------------------
 
 //  logic For Login User
@@ -285,10 +320,11 @@ export const updateShippingAddressCtr = expressHandler(async (req, res) => {
 // @route - api/user/profile
 // @access  Public
 export const userProfileCtrl = expressHandler(async (req, res) => {
-  const AllOrders = await userModel.findById(req.AuthUserId).populate("orders");
-  res.json({
-    success: true,
-    message: "Orders Successfully Fetched !",
-    orders: AllOrders,
-  });
+  console.log("logged in");
+  // const AllOrders = await userModel.findById(req.AuthUserId).populate("orders");
+  // res.json({
+  //   success: true,
+  //   message: "Orders Successfully Fetched !",
+  //   orders: AllOrders,
+  // });
 });

@@ -15,6 +15,16 @@ Content-Type: application/json
 }
 ###
 
+# register User
+
+GET   http://localhost:7000/api/user/auth0/register
+Content-Type: application/json
+
+{
+    "password":"adiljan"
+}
+###
+
 # login User
 POST  http://localhost:7000/api/user/login
 Content-Type: application/json
@@ -75,7 +85,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzM
 ###
 
 # check otp
-
 POST  http://localhost:7000/api/user/checkotp
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNzAwNzQzMDk3LCJleHAiOjE3MDEwMDIyOTd9.LF_gO7dlVBn_NgZaATDVLF_bgHnqm77wbkwhn8k9RW4
@@ -90,9 +99,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzM
 ###
 
 # User profile
-GET   http://localhost:7000/api/user/profile
+
+GET   http://localhost:7000/hell
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMjE1MzFiYjQyYmYwNzQwYjllNWJkIiwiaWF0IjoxNjk5NDYwOTc4LCJleHAiOjE2OTk3MjAxNzh9.DvpE6hqRxTbQ3CIxgB1hqh5XmbY8aILO-ZMGOmRpvjE
+Authorization:Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImtSWHJBUTV0OHlkRG1OU1VSYjJjMCJ9.eyJpc3MiOiJodHRwczovL2Rldi0yM3BscDhnNzdxamdvc3c0LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiIyY3RieXlVcDBNNHc2T1ZvYnRmdGNleW9obldMMUY5WkBjbGllbnRzIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo3MDAwIiwiaWF0IjoxNzAxNzA2MTIwLCJleHAiOjE3MDE3OTI1MjAsImF6cCI6IjJjdGJ5eVVwME00dzZPVm9idGZ0Y2V5b2huV0wxRjlaIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.QH2g3TLN5CZJNAgnciw33Au_YwER90D89jjMSfYsOeYUqKrure9OjlCTXlxvRE8sVHJdZxf_oDiJ5yqtiIRwCZCyGzmBUkf5dJgbeptoB6RJcGL82X-Ei2Bz1uFy4DrQjodf7onWfm_J-TMj3RZKcj-6EXS7rBlFtAgB8UT8JFpgHrMCuZrTs1uoqVtL0BAokWaAjCjaB7OWY56MSd1pxMPl3d2WG49zui5l0rNkL_0g0q2cmKKWuQn4O1o9QlPuztH9eJfK72oiswi-8zNHWsAW-3inXfwOJPWE5WUNpUmchDHa-FDNjZl7MJAiOP7tEuAh8l3NRYycgKv7-94Xng
 
 ###
 
