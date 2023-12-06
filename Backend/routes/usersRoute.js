@@ -2,6 +2,7 @@ import express from "express";
 import isLoggedIn from "../middlewares/isloggedIn.js";
 import {
   registerUserCtrl,
+  registerAuth0User,
   loginUserCtrl,
   userProfileCtrl,
   updateShippingAddressCtr,
@@ -14,7 +15,7 @@ import {
 import checkOtp from "../middlewares/checkOtpCode.js";
 
 const userRoutes = express.Router();
-
+userRoutes.get("/auth0/register", registerAuth0User);
 userRoutes.post("/register", registerUserCtrl);
 userRoutes.post("/login", loginUserCtrl);
 userRoutes.post("/changepassword", isLoggedIn, changepassword);
