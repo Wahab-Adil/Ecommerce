@@ -12,6 +12,7 @@ const UserSchema = new Schema(
     email: {
       type: String,
       required: true,
+      default: "example@gmail.com",
     },
     password: {
       type: String,
