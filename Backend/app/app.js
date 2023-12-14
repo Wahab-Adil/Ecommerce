@@ -2,6 +2,7 @@
 import express from "express";
 import Stripe from "stripe";
 import dotenv from "dotenv";
+import cors from "cors";
 import openIdConnect from "express-openid-connect";
 
 import request from "request";
@@ -119,6 +120,7 @@ app.post(
 );
 
 // middlewares
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 app.use(auth(config));
 
