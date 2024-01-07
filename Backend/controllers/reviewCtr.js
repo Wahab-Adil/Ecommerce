@@ -16,7 +16,6 @@ export const createReview = expressAsyncHandler(async (req, res) => {
   }
 
   const hasReviewed = productFound?.reviews?.find((review) => {
-    console.log(review);
     return review?.user?.toString() === req?.AuthUserId?.toString();
   });
 

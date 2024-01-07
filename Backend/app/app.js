@@ -33,7 +33,6 @@ const app = express();
 // env config
 dotenv.config();
 
-console.log(process.env.AUTH0_BASEURL);
 // AUTH0 config
 const config = {
   authRequired: false,
@@ -60,7 +59,6 @@ app.post(
 
     try {
       event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-      console.log("type of Event", event.type);
     } catch (err) {
       response.status(400).send(`Webhook Error: ${err.message}`);
       return;

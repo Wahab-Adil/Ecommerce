@@ -30,7 +30,6 @@ export const registerUserCtrl = expressHandler(async (req, res) => {
     password: hashedPassword,
   });
 
-  console.log("created User", createdUser);
   if (createdUser) {
     res.json({
       msg: "user Created Successfully",
@@ -249,7 +248,6 @@ export const updateShippingAddressCtr = expressHandler(async (req, res) => {
     country,
     phone,
   } = req.body;
-  console.log(req.AuthUserId);
   const UpdatedUser = await userModel.findByIdAndUpdate(
     { _id: req.AuthUserId },
     {

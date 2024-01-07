@@ -26,7 +26,6 @@ export const createProductCtr = expressAsyncHandler(async (req, res, next) => {
   const foundBrand = await brandModel.findOne({
     name: brand.toLowerCase(),
   });
-  console.log(category, foundCategory);
   if (!foundCategory) {
     throw new Error(
       "Category not found,please create category first or check category name"
@@ -137,13 +136,11 @@ export const filterProduct = expressAsyncHandler(async (req, res, next) => {
     });
   }
 
-  console.log(req.query.limit);
   // pagination
   //  mentioned page
   const page = parseInt(req.query.page) ? parseInt(req.query.page) : 1;
   //  mentioned limit
   const limit = parseInt(req.query.limit) ? parseInt(req.query.limit) : 10;
-  console.log(page, "page", "limit", limit);
   // first -index
   const startIndex = (page - 1) * limit;
   // last- Index
@@ -226,7 +223,6 @@ export const updateProduct = expressAsyncHandler(async (req, res) => {
     },
     { new: true }
   );
-  console.log(req.AuthUserId);
 
   const updatedProduct = await exsitedProduct.save();
   if (!exsitedProduct) {

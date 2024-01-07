@@ -34,7 +34,6 @@ const FaqsForm = () => {
     event.preventDefault();
     if (email.includes("@") && email.includes(".")) {
       // submit form data
-      console.log("Form submitted");
     } else {
       setEmailError("Please enter a valid email address");
     }

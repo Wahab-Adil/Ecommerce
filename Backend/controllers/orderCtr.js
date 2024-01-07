@@ -17,7 +17,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 // @access  Private/Admin
 export const createOrder = expressAsyncHandler(async (req, res) => {
   const { coupon } = req?.query;
-  console.log(coupon);
 
   const FoundCoupon = await coupenModel.findOne({ code: coupon?.toUpperCase });
   if (FoundCoupon?.isExpired) {

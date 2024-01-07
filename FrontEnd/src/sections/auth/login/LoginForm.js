@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
-      width: '100%',
+      width: "100%",
     },
   },
   button: {
-    width: '100%',
+    width: "100%",
   },
 }));
 
 export default function LoginForm() {
   const classes = useStyles();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -30,7 +30,6 @@ export default function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Username: ${username}, Password: ${password}`);
     // Add your login logic here
   };
 
