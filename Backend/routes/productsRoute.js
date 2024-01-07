@@ -25,7 +25,7 @@ productRouter.put("/update/:id", isLoggedIn, isAdmin, updateProduct);
 // get single product
 productRouter.get("/:id", getSingleProduct);
 // get all product
-productRouter.get("/all", getAllProducts);
+productRouter.get("/", getAllProducts);
 // filter product
 productRouter.get("/", filterProduct);
 // filter product
