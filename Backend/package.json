@@ -1,5 +1,5 @@
 {
-  "name": "Ecommerce Backend",
+  "name": "EcommerceBackend",
   "main": "server.js",
   "Description": "Ecommerce Backend Api",
   "type": "module",
