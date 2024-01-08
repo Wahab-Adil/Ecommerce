@@ -139,7 +139,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUzMj
 # create Product
 POST  http://localhost:7000/api/product/create
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5YzFkM2JlNDg1ZjJkNzkxYzc1MWEzIiwiaWF0IjoxNzA0NzMwMTA4LCJleHAiOjE3MDQ5ODkzMDh9.20yBwUjWzNd218eF9TqvmpQBg7iVH9Y4GxrWvWPGszc
 #  --- Sizes list for product is =["S", "M", "L", "XL", "XXL"],
 
 {
@@ -215,7 +215,7 @@ DELETE   http://localhost:7000/api/product/delete/65321531bb42bf0740b9e5bd
 # create Brand
 POST  http://localhost:7000/api/brand/create
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5YzFkM2JlNDg1ZjJkNzkxYzc1MWEzIiwiaWF0IjoxNzA0NzMwMTA4LCJleHAiOjE3MDQ5ODkzMDh9.20yBwUjWzNd218eF9TqvmpQBg7iVH9Y4GxrWvWPGszc
 
 {
     "name":"brand-name"
@@ -225,7 +225,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2
 # update Brand
 PUT   http://localhost:7000/api/brand/update/653221bb5f5038faa596b8a2
 Content-Type: application/json
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjUxN2NiYjJmMzkwNmYyZjI1YTgzMjE4IiwiaWF0IjoxNjk3NzM0MjM2LCJleHAiOjE2OTc5OTM0MzZ9.uCFWvGztihcrl8LiV9OHEDNkqGIeBgYjquyJ6MSSHCA
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5YzFkM2JlNDg1ZjJkNzkxYzc1MWEzIiwiaWF0IjoxNzA0NzMwMTA4LCJleHAiOjE3MDQ5ODkzMDh9.20yBwUjWzNd218eF9TqvmpQBg7iVH9Y4GxrWvWPGszc
 
 {
     "name":"updated name of Brand"
