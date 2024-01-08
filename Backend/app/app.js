@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import openIdConnect from "express-openid-connect";
 
-import request from "request";
 // connection
 import dbConnection from "../config/dbConnect.js";
 
@@ -28,23 +27,6 @@ import {
   globalErrorHandler,
   notFoundErrHandler,
 } from "../middlewares/globalErrorHandler.js";
-import isLoggedIn from "../middlewares/isloggedIn.js";
-import jwtCheck from "../utils/jwtCheck.js";
-var options = {
-  method: "POST",
-  url: "https://dev-23plp8g77qjgosw4.us.auth0.com/oauth/token",
-  headers: { "content-type": "application/json" },
-  body: '{"client_id":"2ctbyyUp0M4w6OVobtftceyohnWL1F9Z","client_secret":"mcI0LMssWdExsiAjngmDF7AqJ6ieiJBDitdYKJIejjNpANYAP4F2KBwmOnEdqOz1","audience":"http://localhost:7000","grant_type":"client_credentials"}',
-};
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-  else {
-    store.set("auth0_credientials", JSON.parse(body));
-  }
-
-  console.log(JSON.parse(body));
-});
 // calling express
 const app = express();
 const auth = openIdConnect.auth;
@@ -52,7 +34,6 @@ const auth = openIdConnect.auth;
 // env config
 dotenv.config();
 
-console.log(process.env.AUTH0_BASEURL);
 // AUTH0 config
 const config = {
   authRequired: false,
