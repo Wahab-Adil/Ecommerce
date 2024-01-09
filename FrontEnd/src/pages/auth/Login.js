@@ -16,6 +16,11 @@ import {
 } from "@mui/material";
 // routes
 import { PATH_AUTH } from "../../routes/path";
+
+// animation
+import animationSetter from "../../animations/animationSetter";
+import loginAnimation from "../../animations/login/login.json";
+import Lottie from "react-lottie";
 // hooks
 // import useAuth from '../../hooks/useAuth';
 // import useResponsive from '../../hooks/useResponsive';
@@ -25,6 +30,7 @@ import { PATH_AUTH } from "../../routes/path";
 // import Image from '../../components/Image';
 // // sections
 import { LoginForm } from "../../sections/auth/login";
+import TextTransaction from "../../utils/textTransaction";
 
 // ----------------------------------------------------------------------
 
@@ -72,7 +78,6 @@ const ContentStyle = styled("div")(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -105,14 +110,31 @@ export default function Login() {
 
       <Container maxWidth="sm">
         <ContentStyle>
-          <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
+          <Lottie
+            options={animationSetter(loginAnimation)}
+            width={"60%"}
+            height={"60%"}
+          />
+          <Stack direction="row" alignItems="center" sx={{ mb: 2 }}>
             <Box sx={{ flexGrow: 1 }}>
-              <Typography variant="h4" gutterBottom>
-                Sign in to Ecommerce Web Application
-              </Typography>
+              <TextTransaction
+                TEXTS={["Welcome", "Sign In"]}
+                duration={3000}
+                color={"primary.main"}
+              />
+              <TextTransaction
+                TEXTS={["To Afghan Shop"]}
+                duration={3000}
+                color={"text.secondary"}
+              />
               <Typography sx={{ color: "text.secondary" }}>
-                Enter your details below.
+                Enter your
               </Typography>
+              <TextTransaction
+                TEXTS={["User-name", "Email"]}
+                duration={5000}
+                color={"primary.main"}
+              />
             </Box>
 
             {/*   <Tooltip title={capitalCase(method)} placement="right">
@@ -147,7 +169,7 @@ export default function Login() {
                 component={RouterLink}
                 to={PATH_AUTH.newPassword}
               >
-               <br/> Forget Password
+                <br /> Forget Password
               </Link>
             </Typography>
           )}
@@ -166,7 +188,7 @@ export default function Login() {
                 component={RouterLink}
                 to={PATH_AUTH.newPassword}
               >
-               <br/> Forget Password
+                <br /> Forget Password
               </Link>
             </Typography>
           )}
