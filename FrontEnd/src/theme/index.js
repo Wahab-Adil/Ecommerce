@@ -1,10 +1,11 @@
 import React, { useMemo } from "react";
+
 // @mui
 import { CssBaseline } from "@mui/material";
 
 import palette from "./palette.js";
-import componentsOverride from './overrides';
-import shadows, { customShadows } from './shadows';
+import componentsOverride from "./overrides";
+import shadows, { customShadows } from "./shadows";
 import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
@@ -16,8 +17,8 @@ export default function ThemeProvider({ children }) {
     () => ({
       palette: palette,
       shape: { borderRadius: 8 },
-      shadows: shadows.light ,
-      customShadows: customShadows.light ,
+      shadows: shadows.light,
+      customShadows: customShadows.light,
     }),
     []
   );
@@ -27,10 +28,10 @@ export default function ThemeProvider({ children }) {
 
   return (
     <StyledEngineProvider injectFirst>
-    <MUIThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </MUIThemeProvider>
+      <MUIThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </MUIThemeProvider>
     </StyledEngineProvider>
   );
 }
