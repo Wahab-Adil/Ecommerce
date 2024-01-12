@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { TextField, Button } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
-      width: '100%',
+      width: "100%",
     },
   },
   button: {
-    width: '100%',
+    width: "100%",
   },
 }));
 
 export default function LoginForm() {
+  const theme = useTheme();
   const classes = useStyles();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -30,18 +31,17 @@ export default function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Username: ${username}, Password: ${password}`);
     // Add your login logic here
   };
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <TextField
-        id="username"
-        label="Username"
+        id="email"
+        label="Email"
         variant="outlined"
-        value={username}
-        onChange={handleUsernameChange}
+        value={email}
+        onChange={handleEmailChange}
         fullWidth
       />
       <TextField
@@ -54,12 +54,7 @@ export default function LoginForm() {
         onChange={handlePasswordChange}
         fullWidth
       />
-      <Button
-        variant="contained"
-        color="primary"
-        type="submit"
-        className={classes.button}
-      >
+      <Button variant="contained" type="submit" className={classes.button}>
         Login
       </Button>
     </form>

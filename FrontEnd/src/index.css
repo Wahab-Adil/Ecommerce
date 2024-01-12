@@ -1,10 +1,14 @@
 @font-face {
   font-family: "Raleway";
-  src: url(../public/Font/Raleway-Medium.ttf) format("truetype");
+  src: url(../public/Font/Raleway-Medium.ttf);
+}
+body,
+html {
+  font-family: "Raleway";
 }
 
 #root {
-  font-family: Raleway;
+  font-family: "Raleway";
   min-height: 100vh;
   position: relative;
 }

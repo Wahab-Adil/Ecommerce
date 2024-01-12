@@ -15,6 +15,12 @@ import {
 export default function ThemeProvider({ children }) {
   const themeOptions = useMemo(
     () => ({
+      typography: {
+        fontFamily: "Raleway",
+        fontWeightLight: 600,
+        fontWeightRegular: 600,
+        fontWeightMedium: 600,
+      },
       palette: palette,
       shape: { borderRadius: 8 },
       shadows: shadows.light,

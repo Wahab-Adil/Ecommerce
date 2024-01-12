@@ -7,14 +7,14 @@ const TextTransaction = ({ TEXTS, duration, color }) => {
   React.useEffect(() => {
     const intervalId = setInterval(
       () => setIndex((index) => index + 1),
-      duration // every 3 seconds
+      duration
     );
     return () => clearTimeout(intervalId);
   }, []);
 
   return (
     <h1>
-      <TextTransition style={{ color }} springConfig={presets.wobbly}>
+      <TextTransition style={{ color: color }} springConfig={presets.wobbly}>
         {TEXTS[index % TEXTS.length]}
       </TextTransition>
     </h1>
