@@ -1,20 +1,13 @@
-import * as Yup from 'yup';
-import { useState } from 'react';
+import * as Yup from "yup";
+import { useState } from "react";
 // form
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 // @mui
-import { Stack, IconButton, InputAdornment, Alert, Input, Button, ButtonBase } from '@mui/material';
-import { LoadingButton } from '@mui/lab';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import TextField from '@material-ui/core/TextField'
-// hooks
-// import useAuth from '../../../hooks/useAuth';
-// import useIsMountedRef from '../../../hooks/useIsMountedRef';
-// // components
-// import Iconify from '../../../components/Iconify';
-// import { FormProvider, RHFTextField } from '../../../components/hook-form';
+import { Stack, IconButton, InputAdornment, TextField } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 // ----------------------------------------------------------------------
 
@@ -64,27 +57,28 @@ export default function RegisterForm() {
   // };
 
   return (
-    <form  >
+    <form>
       <Stack spacing={3}>
         {/* {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>} */}
 
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-          <TextField   variant="outlined" name="firstName" label="First name" />
-          <TextField  variant="outlined" name="lastName" label="Last name" />
-        </Stack>
+        <TextField variant="outlined" name="firstName" label="First name" />
 
-        <TextField   variant="outlined" name="email" label="Email address" />
+        <TextField variant="outlined" name="email" label="Email address" />
 
-        <TextField   variant="outlined"
+        <TextField
+          variant="outlined"
           name="password"
           label="Password"
-          type={showPassword ? 'text' : 'password'}
+          type={showPassword ? "text" : "password"}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton edge="end" onClick={() => setShowPassword(!showPassword)}>
-                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                
+                <IconButton
+                  edge="end"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+
                   {/* <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} /> */}
                 </IconButton>
               </InputAdornment>
@@ -92,7 +86,7 @@ export default function RegisterForm() {
           }}
         />
 
-        <LoadingButton fullWidth size="large" type="submit" variant="contained" >
+        <LoadingButton fullWidth size="large" type="submit" variant="contained">
           Register
         </LoadingButton>
       </Stack>

@@ -1,10 +1,11 @@
 import React, { useMemo } from "react";
+
 // @mui
 import { CssBaseline } from "@mui/material";
 
 import palette from "./palette.js";
-import componentsOverride from './overrides';
-import shadows, { customShadows } from './shadows';
+import componentsOverride from "./overrides";
+import shadows, { customShadows } from "./shadows";
 import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
@@ -14,10 +15,16 @@ import {
 export default function ThemeProvider({ children }) {
   const themeOptions = useMemo(
     () => ({
+      typography: {
+        fontFamily: "Raleway",
+        fontWeightLight: 600,
+        fontWeightRegular: 600,
+        fontWeightMedium: 600,
+      },
       palette: palette,
       shape: { borderRadius: 8 },
-      shadows: shadows.light ,
-      customShadows: customShadows.light ,
+      shadows: shadows.light,
+      customShadows: customShadows.light,
     }),
     []
   );
@@ -27,10 +34,10 @@ export default function ThemeProvider({ children }) {
 
   return (
     <StyledEngineProvider injectFirst>
-    <MUIThemeProvider theme={theme}>
-      <CssBaseline />
-      {children}
-    </MUIThemeProvider>
+      <MUIThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </MUIThemeProvider>
     </StyledEngineProvider>
   );
 }
