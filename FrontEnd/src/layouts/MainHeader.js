@@ -187,7 +187,7 @@ const MainHeader = () => {
                       to="/contact"
                       style={{ display: "flex", alignItems: "center" }}
                     >
-                      <ContactIcon  style={{ marginRight: "8px" }} />
+                      <ContactIcon style={{ marginRight: "8px" }} />
                       Contact Us
                     </MenuItem>
                   </Select>
@@ -248,7 +248,7 @@ const MainHeader = () => {
                 <Button color="inherit" component={Link} to={PATH_AUTH.login}>
                   <LockIcon /> &nbsp; Login
                 </Button>
-                <Button color="inherit" component={Link} to="/register">
+                <Button color="inherit" component={Link} to="/auth/register">
                   <PersonAddIcon /> &nbsp; Register
                 </Button>
               </Box>
