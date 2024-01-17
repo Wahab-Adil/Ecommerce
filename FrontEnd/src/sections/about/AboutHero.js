@@ -12,7 +12,6 @@ import animationsSetter from "../../animations/animationSetter";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled("div")(({ theme }) => ({
-  marginTop: "3em",
   paddingBottom: theme.spacing(10),
 }));
 
