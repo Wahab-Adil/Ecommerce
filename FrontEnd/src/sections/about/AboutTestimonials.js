@@ -10,7 +10,7 @@ import forwardground from "../../animations/old/new/avatar/Animated Avatar.json"
 import animationSetter from "../../animations/animationSetter";
 
 import wahab from "../../assets/team/wahab.jpeg";
-import saboor from "../../assets/team/jamal.jpg";
+import jamal from "../../assets/team/jamal.jpg";
 
 const RootStyle = styled("div")(({ theme }) => ({
   textAlign: "center",
@@ -87,7 +87,7 @@ export default function AboutTestimonials() {
                           width: "200px",
                           height: "200px",
                         }}
-                        src={saboor}
+                        src={jamal}
                       />
                     </Avatar>
                   </div>
