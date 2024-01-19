@@ -1,14 +1,12 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import { Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
 import EastIcon from "@mui/icons-material/East";
-import { makeStyles  } from "@material-ui/core/styles";
-import styled, { keyframes } from 'styled-components';
+import { makeStyles } from "@mui/styles";
+import styled, { keyframes } from "styled-components";
 import img15 from "../../assets/img15.jpg";
 import img5 from "../../assets/img5.jpg";
 import img14 from "../../assets/img14.jpg";
-
 
 //-------------------------------------------------------
 const fadeInFromLeft = keyframes`
@@ -28,6 +26,7 @@ const FadeInFromLeftContainer = styled.div`
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
+    fontFamily: "Raleway",
     display: "flex",
     alignItems: "center",
     minHeight: "100vh",
@@ -63,27 +62,26 @@ const LandingHero = () => {
     <div className={classes.pageContainer}>
       <div className={classes.welcomeText}>
         <FadeInFromLeftContainer>
-        <Typography className="fade-in-from-left" variant="h4">
-          <span style={{ whiteSpace: "nowrap" }}> Welcome to the Best </span>{" "}
-          <br />
-          <span style={{ whiteSpace: "nowrap" }}>E-commerce Website!</span>
-        </Typography>
-     
-        <Typography variant="body1">
-          Buy What You Need By Your Finger Tips
-        </Typography>
-        <Button
-          color="primary"
-          component={Link}
-          to="/login"
-          endIcon={<EastIcon />}
+          <Typography className="fade-in-from-left" variant="h4">
+            <span style={{ whiteSpace: "nowrap" }}> Welcome to the Best </span>{" "}
+            <br />
+            <span style={{ whiteSpace: "nowrap" }}>E-commerce Website!</span>
+          </Typography>
+
+          <Typography variant="body1">
+            Buy What You Need By Your Finger Tips
+          </Typography>
+          <Button
+            color="primary"
+            component={Link}
+            to="/login"
+            endIcon={<EastIcon />}
           >
-          Login
-        </Button>
-          </FadeInFromLeftContainer>
+            Login
+          </Button>
+        </FadeInFromLeftContainer>
       </div>
       <div className={classes.imageContainer}>
-
         <div className={classes.imageWrapper}>
           <img className={classes.image} src={img15} alt="Image 1" />
           <img className={classes.image} src={img5} alt="Image 2" />

@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import { Box,Button } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+import {
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  Box,
+} from "@mui/material";
 import { Products } from "../../_mock";
-
 
 //----------------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
-   
     alignItems: "center",
     minHeight: "100vh",
     backgroundColor: "#f3f6f9ff",
@@ -60,13 +61,13 @@ const LandingProducts = () => {
   const classes = useStyles();
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" component="h1" align="center" >
+      <Typography variant="h4" component="h1" align="center">
         LATEST PRODUCTS
       </Typography>
       <div className={classes.root}>
-        <Box  style={{ marginTop: "20px" }}/>
+        <Box style={{ marginTop: "20px" }} />
 
-        <Grid  container spacing={2}>
+        <Grid container spacing={2}>
           {Products.map((product) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
               <Card className={classes.card}>
@@ -82,7 +83,7 @@ const LandingProducts = () => {
                     variant="body1"
                     component="p"
                     className={classes.productPrice}
-                    >
+                  >
                     Price: ${product.price}
                   </Typography>
                 </CardContent>
@@ -90,17 +91,27 @@ const LandingProducts = () => {
                   src={product.picture}
                   alt={product.name}
                   className={classes.productImage}
-                  />
+                />
               </Card>
             </Grid>
           ))}
         </Grid>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-          <Button variant="contained" color="primary" component={Link} to="/products">
-           View All Products :)
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/products"
+          >
+            View All Products :)
           </Button>
         </div>
-        
       </div>
     </div>
   );

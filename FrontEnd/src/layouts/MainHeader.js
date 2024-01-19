@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   IconButton,
-  makeStyles,
   Drawer,
   List,
   ListItem,
@@ -16,7 +15,8 @@ import {
   useTheme,
   Select,
   MenuItem,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
