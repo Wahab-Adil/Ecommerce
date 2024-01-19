@@ -1,52 +1,102 @@
+import { capitalCase } from "change-case";
+import { Link as RouterLink } from "react-router-dom";
 // @mui
-import { styled } from '@mui/material/styles';
-import { Box, Link, Container, Typography } from '@mui/material';
-// layouts
-// import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
-// components
-// import Page from '../../components/Page';import Page from '../../components/Page';
+import { styled } from "@mui/material/styles";
+import {
+  Box,
+  Card,
+  Stack,
+  Link,
+  Container,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
+// routes
+import { PATH_AUTH } from "../../routes/path";
 
-// sections
-import { NewPasswordForm } from '../../sections/auth/new-password';
-// assets
-// import { SentIcon } from '../../assets';
+// animation
+import Lottie from "react-lottie";
+import animationSetter from "../../animations/animationSetter";
+import codesent from "../../animations/newpassword/sent.json";
+import planet from "../../animations/newpassword/planet.json";
+// // sections
+import { NewPasswordForm } from "../../sections/auth/new-password";
+import TextTransaction from "../../utils/textTransaction";
 
 // ----------------------------------------------------------------------
 
-const ContentStyle = styled('div')(({ theme }) => ({
+const RootStyle = styled("div")(({ theme }) => ({
+  fontFamily: "Raleway",
+  marginTop: "-3rem",
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+  },
+}));
+
+const ContentStyle = styled("div")(({ theme }) => ({
   maxWidth: 480,
-  margin: 'auto',
-  minHeight: '100vh',
-  display: 'flex',
-  justifyContent: 'center',
-  flexDirection: 'column',
+  margin: "auto",
+  minHeight: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  flexDirection: "column",
   padding: theme.spacing(12, 0),
 }));
 
 // ----------------------------------------------------------------------
 
 export default function NewPassword() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isMdScreenUp = useMediaQuery(theme.breakpoints.up("lg"));
+  console.log(theme.palette.primary.main);
   return (
-   
-      
+    <RootStyle>
+      <Container maxWidth="sm">
+        <ContentStyle>
+          <Stack direction="row" alignItems="center" sx={{ mb: 2 }}>
+            <Lottie
+              options={animationSetter(codesent)}
+              width={"70%"}
+              height={"70%"}
+              isClickToPauseDisabled
+            />
+            <Box sx={{ flexGrow: 1, ml: "-3em" }}>
+              <TextTransaction
+                TEXTS={["Welcome to", "You Were"]}
+                duration={3000}
+                color={theme.palette.primary.main}
+              />
+              <TextTransaction
+                TEXTS={["Afghan Shop","Received Our Email"]}
+                duration={3000}
+                // color={theme.palette.primary.main}
+              />
+            </Box>
+          </Stack>
+          <Stack
+            sx={{
+              opacity: ".6",
+              margin: "auto",
+              position: "absolute",
+              top: "39%",
+              right: "25%",
+              left: "25%",
+            }}
+          >
+          </Stack>
 
-      <Container>
-        <ContentStyle sx={{ textAlign: 'center' }}>
-          {/* <SentIcon sx={{ mb: 5, mx: 'auto', height: 120 }} /> */}
-
-          {/* <Typography variant="h3" gutterBottom>
-            Request sent successfully!
-          </Typography> */}
-
-          <Typography sx={{ color: 'text.secondary' }}>
-            We'll sent a 6-digit confirmation email to your email.
-            <br />
-            Please enter your Email and past the code in below box to verify your email.
-          </Typography>
-
-          <Box sx={{ mt: 5, mb: 3 }}>
+          <Stack>
+            <TextTransaction
+              TEXTS={["Enter the Code","New Password"]}
+              duration={5000}
+              color={theme.palette.primary.main}
+            />
             <NewPasswordForm />
-          </Box>
+          </Stack>
+          <Box  sx={{ textAlign: 'center' }} >
 
           <Typography variant="body2">
             Don’t have a code? &nbsp;
@@ -54,7 +104,10 @@ export default function NewPassword() {
               Resend code
             </Link>
           </Typography>
+          </Box>
+
         </ContentStyle>
       </Container>
+    </RootStyle>
   );
 }

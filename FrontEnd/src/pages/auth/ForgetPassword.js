@@ -18,11 +18,11 @@ import { PATH_AUTH } from "../../routes/path";
 // animation
 import Lottie from "react-lottie";
 import animationSetter from "../../animations/animationSetter";
-import loginAnimation from "../../animations/login/login.json";
-import birdFlying from "../../animations/login/bird-flying.json";
-import travelling from "../../animations/old/welcome1.json";
+import forgetpasswordAnimation from "../../animations/forgetpassword/sendcode.json";
+import birdFlying from "../../animations/forgetpassword/bird-flying.json";
+import everywhere from "../../animations/forgetpassword/everywhere.json";
 // // sections
-import { LoginForm } from "../../sections/auth/login";
+import { ForgetPasswordForm } from "../../sections/auth/forgetpassword";
 import TextTransaction from "../../utils/textTransaction";
 
 // ----------------------------------------------------------------------
@@ -47,7 +47,7 @@ const ContentStyle = styled("div")(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Login() {
+export default function ForgetPassword() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -57,26 +57,26 @@ export default function Login() {
     <RootStyle>
       <Container maxWidth="sm">
         <ContentStyle>
-          <Stack direction="row" alignItems="center" sx={{ mb: 2 }}>
+          <Stack gap={7} direction="row" alignItems="center" sx={{ mb: 2 }}>
             <Lottie
-              options={animationSetter(loginAnimation)}
+              options={animationSetter(forgetpasswordAnimation)}
               width={"70%"}
               height={"70%"}
               isClickToPauseDisabled
             />
-            <Box sx={{ flexGrow: 1, ml: "-3em" }}>
+            <Box gap={4} sx={{ flexGrow: 1, ml: "-3em" }}>
               <TextTransaction
-                TEXTS={["Welcome", "Sign In"]}
+                TEXTS={["Welcome", "Thanks"]}
                 duration={3000}
                 color={theme.palette.primary.main}
               />
               <TextTransaction
-                TEXTS={["To Afghan Shop"]}
+                TEXTS={["To Afghan Shop", "For Your Trust"]}
                 duration={3000}
                 // color={theme.palette.primary.main}
               />
               {isMdScreenUp ? (
-                <Stack
+                <Stack mt={4}
                   sx={{ position: "absolute", top: "25%", right: "29.5%" }}
                 >
                   <TextTransaction
@@ -107,7 +107,7 @@ export default function Login() {
             <TextTransaction
               TEXTS={[
                 <Lottie
-                  options={animationSetter(travelling)}
+                  options={animationSetter(everywhere)}
                   width={"100%"}
                   height={"100%"}
                   isClickToPauseDisabled
@@ -117,35 +117,15 @@ export default function Login() {
             />
           </Stack>
 
-          <Stack>
+          <Stack >
+            
             <TextTransaction
-              TEXTS={["Email", "Password"]}
+              TEXTS={["Enter Your Email", "Forget Your Password?"]}
               duration={5000}
               color={theme.palette.primary.main}
             />
-            <LoginForm />
+            <ForgetPasswordForm />
           </Stack>
-
-          {!isMobile && (
-            <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-              Don’t have an account?{" "}
-              <Link
-                variant="subtitle2"
-                component={RouterLink}
-                to={PATH_AUTH.register}
-              >
-                Get started
-              </Link>
-              <Link
-                variant="subtitle2"
-                component={RouterLink}
-                to={PATH_AUTH.forgetPassword}
-              >
-                <br /> Forget Password
-              </Link>
-              
-            </Typography>
-          )}
         </ContentStyle>
       </Container>
     </RootStyle>
