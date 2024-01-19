@@ -31,8 +31,6 @@ export default function NewPasswordForm() {
     code2: Yup.string().required('Code is required'),
     code3: Yup.string().required('Code is required'),
     code4: Yup.string().required('Code is required'),
-    code5: Yup.string().required('Code is required'),
-    code6: Yup.string().required('Code is required'),
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
     confirmPassword: Yup.string()
@@ -45,8 +43,6 @@ export default function NewPasswordForm() {
     code2: '',
     code3: '',
     code4: '',
-    code5: '',
-    code6: '',
     email: emailRecovery || '',
     password: '',
     confirmPassword: '',
@@ -135,10 +131,9 @@ export default function NewPasswordForm() {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        <TextField variant='outlined' name="email" label="Email" disabled={!!emailRecovery} />
-
+     
         <Stack direction="row" spacing={2} justifyContent="center">
-          {['code1', 'code2', 'code3', 'code4', 'code5', 'code6'].map((name, index) => (
+          {['code1', 'code2', 'code3', 'code4'].map((name, index) => (
             <Controller
               key={name}
               name={`code${index + 1}`}
@@ -166,7 +161,7 @@ export default function NewPasswordForm() {
           ))}
         </Stack>
 
-        {(!!errors.code1 || !!errors.code2 || !!errors.code3 || !!errors.code4 || !!errors.code5 || !!errors.code6) && (
+        {(!!errors.code1 || !!errors.code2 || !!errors.code3 || !!errors.code4 ) && (
           <FormHelperText error sx={{ px: 2 }}>
             Code is required
           </FormHelperText>
