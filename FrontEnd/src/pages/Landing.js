@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+
 // import layouts
 import MainHeader from "../layouts/MainHeader";
 import Footer from "../layouts/Footer";
