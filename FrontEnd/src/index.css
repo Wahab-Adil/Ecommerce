@@ -5,6 +5,7 @@
 body,
 html {
   font-family: "Raleway";
+  box-sizing: border-box;
 }
 
 #root {

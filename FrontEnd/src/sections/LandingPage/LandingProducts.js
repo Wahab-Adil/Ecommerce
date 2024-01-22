@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
   Box,
+  useTheme,
 } from "@mui/material";
 import { Products } from "../../_mock";
 
@@ -14,9 +15,9 @@ import { Products } from "../../_mock";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
+    marginTop: "10rem",
     alignItems: "center",
     minHeight: "100vh",
-    backgroundColor: "#f3f6f9ff",
   },
   root: {
     flexGrow: 1,
@@ -28,9 +29,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
     position: "relative",
     transition: "transform 0.3s, box-shadow 0.3s",
+    boxShadow: theme.shadows[20],
+    borderRadius: 1,
+    mb: 2,
     "&:hover": {
       transform: "scale(1.05)", // Increase the scale on hover
-      boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.3)", // Enhance the box shadow on hover
     },
   },
   cardContent: {
@@ -38,8 +41,12 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    color: "#fff",
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[20],
+    "&:hover": {
+      backgroundColor: theme.palette.background.paper.dark,
+    },
+    color: theme.palette.primary.light,
     padding: theme.spacing(1),
     display: "flex",
     justifyContent: "space-between",
@@ -59,9 +66,15 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingProducts = () => {
   const classes = useStyles();
+  const theme = useTheme();
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" component="h1" align="center">
+      <Typography
+        color="primary.main"
+        variant="h4"
+        component="h2"
+        align="center"
+      >
         LATEST PRODUCTS
       </Typography>
       <div className={classes.root}>
@@ -88,6 +101,7 @@ const LandingProducts = () => {
                   </Typography>
                 </CardContent>
                 <img
+                  style={{ padding: "10px" }}
                   src={product.picture}
                   alt={product.name}
                   className={classes.productImage}
@@ -108,8 +122,15 @@ const LandingProducts = () => {
             color="primary"
             component={Link}
             to="/products"
+            sx={{
+              backgroundColor: theme.palette.primary.light,
+              "&:hover": {
+                backgroundColor: theme.palette.primary.main,
+                color: "white",
+              },
+            }}
           >
-            View All Products :)
+            View All Products
           </Button>
         </div>
       </div>

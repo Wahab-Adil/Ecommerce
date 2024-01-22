@@ -1,18 +1,18 @@
 // @mui
-import { alpha } from '@mui/material/styles';
+import { alpha } from "@mui/material/styles";
 //
-import palette from './palette';
+import palette from "./palette";
 
 // ----------------------------------------------------------------------
 
-const LIGHT_MODE =palette.secondary.main;
+const LIGHT_MODE = palette.primary.main;
 
 const createShadow = (color) => {
-  const transparent1 = alpha(color, 0.2);
-  const transparent2 = alpha(color, 0.14);
-  const transparent3 = alpha(color, 0.12);
+  const transparent1 = alpha(color, 0.1);
+  const transparent2 = alpha(color, 0.1);
+  const transparent3 = alpha(color, 0.01);
   return [
-    'none',
+    "none",
     `1px 2px 1px -1px ${transparent1},0px 1px 1px 0px ${transparent2},1px 1px 3px 0px ${transparent3}`,
     `1px 3px 1px -2px ${transparent1},0px 2px 2px 0px ${transparent2},1px 1px 5px 0px ${transparent3}`,
     `1px 3px 3px -2px ${transparent1},0px 3px 4px 0px ${transparent2},1px 1px 8px 0px ${transparent3}`,
@@ -57,9 +57,15 @@ const createCustomShadow = (color) => {
     warning: `0 8px 16px 0 ${alpha(palette.warning.main, 0.24)}`,
     error: `0 8px 16px 0 ${alpha(palette.error.main, 0.24)}`,
     //
-    card: `0 0 2px 0 ${alpha(color, 0.2)}, 0 12px 24px -4px ${alpha(color, 0.12)}`,
+    card: `0 0 2px 0 ${alpha(color, 0.2)}, 0 12px 24px -4px ${alpha(
+      color,
+      0.12
+    )}`,
     dialog: `-40px 40px 80px -8px ${alpha(palette.common.black, 0.24)}`,
-    dropdown: `0 0 2px 0 ${alpha(color, 0.24)}, -20px 20px 40px -4px ${alpha(color, 0.24)}`,
+    dropdown: `0 0 2px 0 ${alpha(color, 0.24)}, -20px 20px 40px -4px ${alpha(
+      color,
+      0.24
+    )}`,
   };
 };
 
