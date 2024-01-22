@@ -8,9 +8,9 @@ import palette from "./palette";
 const LIGHT_MODE = palette.primary.main;
 
 const createShadow = (color) => {
-  const transparent1 = alpha(color, 0.1);
-  const transparent2 = alpha(color, 0.1);
-  const transparent3 = alpha(color, 0.01);
+  const transparent1 = alpha(color, 0.08);
+  const transparent2 = alpha(color, 0.05);
+  const transparent3 = alpha(color, 0.05);
   return [
     "none",
     `1px 2px 1px -1px ${transparent1},0px 1px 1px 0px ${transparent2},1px 1px 3px 0px ${transparent3}`,

@@ -9,10 +9,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     minHeight: "100vh",
-    backgroundColor: "#f3f6f9ff",
+    backgroundColor: theme.palette.background.paper,
   },
   componentContainer: {
     flex: 1,
+    boxShadow: theme.shadows[7],
     padding: theme.spacing(2),
     // border: "1px solid #ccc",
     borderRadius: theme.spacing(1),
