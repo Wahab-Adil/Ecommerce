@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   IconButton,
-  makeStyles,
   Drawer,
   List,
   ListItem,
@@ -15,8 +13,10 @@ import {
   useMediaQuery,
   useTheme,
   Select,
+  Menu,
   MenuItem,
-} from "@material-ui/core";
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -28,15 +28,22 @@ import LockIcon from "@material-ui/icons/Lock";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { Link } from "react-router-dom";
 import { PATH_AUTH } from "../routes/path";
+// Icons
+import { Shop } from "@mui/icons-material";
+
+// animation
+import Lottie from "react-lottie";
+import LogoAnimation from "../animations/landing/logo.json";
+import animationSetter from "../animations/animationSetter";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    // backgroundColor: "transparent",
-    // color:'black',
-    // boxShadow: "none",
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.text.secondary,
+    boxShadow: theme.shadows[10],
   },
   toolbar: {
     display: "flex",
@@ -117,114 +124,118 @@ const MainHeader = () => {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" noWrap>
-                Furniture E-commerce Website
-              </Typography>
+              <Lottie options={animationSetter(LogoAnimation)} width={"50px"} />
             </>
           ) : (
             <>
-              <Typography variant="h6" noWrap className={classes.websiteName}>
-                Furniture E-commerce Website
-              </Typography>
+              <Lottie options={animationSetter(LogoAnimation)} width={"50px"} />
+
               <Box>
                 {isMdScreen ? (
-                  <Select
-                    // variant="outlined"
-                    // displayEmpty
-                    value={select}
-                    onChange={handleChange}
-                    inputProps={{ "aria-label": "navigation" }}
-                    classes={{ root: classes.select }}
-                  >
-                    <MenuItem
-                      value={0}
-                      component={Link}
-                      to="/"
-                      style={{ display: "flex", alignItems: "center" }}
+                  <>
+                    <Select
+                      variant="outlined"
+                      displayEmpty
+                      value={select}
+                      onChange={handleChange}
+                      inputProps={{ "aria-label": "navigation" }}
+                      classes={{ root: classes.select }}
                     >
-                      <HomeIcon style={{ marginRight: "8px" }} />
-                      Home
-                    </MenuItem>
-                    <MenuItem
-                      value={1}
-                      component={Link}
-                      to="/shop"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <ShoppingCartIcon style={{ marginRight: "8px" }} />
-                      Shop Now
-                    </MenuItem>
-                    <MenuItem
-                      value={2}
-                      component={Link}
-                      to="/furniture"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <FurnitureIcon style={{ marginRight: "8px" }} />
-                      Furniture
-                    </MenuItem>
-                    <MenuItem
-                      value={3}
-                      component={Link}
-                      to="/living-room"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <LivingRoomIcon style={{ marginRight: "8px" }} />
-                      Living Room
-                    </MenuItem>
-                    <MenuItem
-                      value={4}
-                      component={Link}
-                      to="/about"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <AboutIcon style={{ marginRight: "8px" }} />
-                      About Us
-                    </MenuItem>
-                    <MenuItem
-                      value={5}
-                      component={Link}
-                      to="/contact"
-                      style={{ display: "flex", alignItems: "center" }}
-                    >
-                      <ContactIcon style={{ marginRight: "8px" }} />
-                      Contact Us
-                    </MenuItem>
-                  </Select>
+                      H
+                      <MenuItem value={0} component={Link} to="/">
+                        <HomeIcon style={{ marginRight: "8px" }} />
+                        Home
+                      </MenuItem>
+                      <MenuItem
+                        value={1}
+                        component={Link}
+                        to="/shop"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <ShoppingCartIcon style={{ marginRight: "8px" }} />
+                        Shop Now
+                      </MenuItem>
+                      <MenuItem
+                        value={2}
+                        component={Link}
+                        to="/furniture"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <FurnitureIcon style={{ marginRight: "8px" }} />
+                        Furniture
+                      </MenuItem>
+                      <MenuItem
+                        value={3}
+                        component={Link}
+                        to="/living-room"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <LivingRoomIcon style={{ marginRight: "8px" }} />
+                        Living Room
+                      </MenuItem>
+                      <MenuItem
+                        value={4}
+                        component={Link}
+                        to="/about"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <AboutIcon style={{ marginRight: "8px" }} />
+                        About Us
+                      </MenuItem>
+                      <MenuItem
+                        value={5}
+                        component={Link}
+                        to="/contact"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <ContactIcon style={{ marginRight: "8px" }} />
+                        Contact Us
+                      </MenuItem>
+                    </Select>
+                  </>
                 ) : (
                   <>
-                    <Button
-                      color="inherit"
-                      component={Link}
-                      to="/"
-                      startIcon={<HomeIcon />}
+                    <Select
+                      // variant="outlined"
+                      // displayEmpty
+                      value={select}
+                      onChange={handleChange}
+                      inputProps={{ "aria-label": "navigation" }}
+                      classes={{ root: classes.select }}
                     >
-                      Home
-                    </Button>
-                    <Button
-                      color="inherit"
-                      component={Link}
-                      to="/shop"
-                      startIcon={<ShoppingCartIcon />}
-                    >
-                      Shop Now
-                    </Button>
-                    <Button
-                      color="inherit"
-                      component={Link}
-                      to="/furniture"
-                      startIcon={<FurnitureIcon />}
-                    >
-                      Furniture
-                    </Button>
-                    <Button
-                      color="inherit"
-                      component={Link}
-                      to="/living-room"
-                      startIcon={<LivingRoomIcon />}
-                    >
-                      Living Room
-                    </Button>
+                      <MenuItem selected value={0} component={Link} to="/">
+                        <HomeIcon style={{ marginRight: "8px" }} />
+                        Home
+                      </MenuItem>
+                      <MenuItem
+                        value={1}
+                        component={Link}
+                        to="/shop"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <ShoppingCartIcon style={{ marginRight: "8px" }} />
+                        Shop Now
+                      </MenuItem>
+                      <MenuItem
+                        value={2}
+                        component={Link}
+                        to="/furniture"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <FurnitureIcon style={{ marginRight: "8px" }} />
+                        Furniture
+                      </MenuItem>
+                      <MenuItem
+                        value={3}
+                        component={Link}
+                        to="/living-room"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <LivingRoomIcon style={{ marginRight: "8px" }} />
+                        Living Room
+                      </MenuItem>
+                    </Select>
+
                     <Button
                       color="inherit"
                       component={Link}
@@ -232,14 +243,6 @@ const MainHeader = () => {
                       startIcon={<AboutIcon />}
                     >
                       About Us
-                    </Button>
-                    <Button
-                      color="inherit"
-                      component={Link}
-                      to="/contact"
-                      startIcon={<ContactIcon />}
-                    >
-                      Contact Us
                     </Button>
                   </>
                 )}

@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import { Box,Button } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+import {
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  Box,
+  useTheme,
+} from "@mui/material";
 import { Products } from "../../_mock";
-
 
 //----------------------------------------------------------------------------
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
-   
+    marginTop: "10rem",
     alignItems: "center",
     minHeight: "100vh",
-    backgroundColor: "#f3f6f9ff",
   },
   root: {
     flexGrow: 1,
@@ -27,9 +29,11 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
     position: "relative",
     transition: "transform 0.3s, box-shadow 0.3s",
+    boxShadow: theme.shadows[20],
+    borderRadius: 1,
+    mb: 2,
     "&:hover": {
       transform: "scale(1.05)", // Increase the scale on hover
-      boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.3)", // Enhance the box shadow on hover
     },
   },
   cardContent: {
@@ -37,8 +41,12 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    color: "#fff",
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[20],
+    "&:hover": {
+      backgroundColor: theme.palette.background.paper.dark,
+    },
+    color: theme.palette.primary.light,
     padding: theme.spacing(1),
     display: "flex",
     justifyContent: "space-between",
@@ -58,15 +66,21 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingProducts = () => {
   const classes = useStyles();
+  const theme = useTheme();
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" component="h1" align="center" >
+      <Typography
+        color="primary.main"
+        variant="h4"
+        component="h2"
+        align="center"
+      >
         LATEST PRODUCTS
       </Typography>
       <div className={classes.root}>
-        <Box  style={{ marginTop: "20px" }}/>
+        <Box style={{ marginTop: "20px" }} />
 
-        <Grid  container spacing={2}>
+        <Grid container spacing={2}>
           {Products.map((product) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
               <Card className={classes.card}>
@@ -82,25 +96,43 @@ const LandingProducts = () => {
                     variant="body1"
                     component="p"
                     className={classes.productPrice}
-                    >
+                  >
                     Price: ${product.price}
                   </Typography>
                 </CardContent>
                 <img
+                  style={{ padding: "10px" }}
                   src={product.picture}
                   alt={product.name}
                   className={classes.productImage}
-                  />
+                />
               </Card>
             </Grid>
           ))}
         </Grid>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-          <Button variant="contained" color="primary" component={Link} to="/products">
-           View All Products :)
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/products"
+            sx={{
+              backgroundColor: theme.palette.primary.light,
+              "&:hover": {
+                backgroundColor: theme.palette.primary.main,
+                color: "white",
+              },
+            }}
+          >
+            View All Products
           </Button>
         </div>
-        
       </div>
     </div>
   );
