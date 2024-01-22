@@ -58,6 +58,7 @@ const FaqsForm = () => {
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           required
+          sx={{ mt: 1 }}
         />
         <Button
           className={classes.submitButton}
