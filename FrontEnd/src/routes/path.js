@@ -18,6 +18,7 @@ export const PATH_AUTH = {
 // Root Pages
 export const PATH_PAGE = {
   landingPage: path(PATH_ROOT, ""),
+  productDetails: path(PATH_ROOT, "/product-detials"),
   aboutUs: path(PATH_ROOT, "about"),
   MyCart: path(PATH_ROOT, "my-cart"),
 };

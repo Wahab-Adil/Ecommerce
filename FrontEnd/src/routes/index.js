@@ -38,6 +38,10 @@ export default function Router() {
       path: "/",
       children: [
         { path: PATH_PAGE.landingPage, exact: true, element: <Landing /> },
+        {
+          path: PATH_PAGE.productDetails,
+          element: <ProductDetails />,
+        },
         { path: PATH_PAGE.aboutUs, element: <AboutUs /> },
         { path: PATH_PAGE.MyCart, element: <MyCart /> },
       ],
@@ -49,6 +53,7 @@ export default function Router() {
 const Landing = Loadable(lazy(() => import("../pages/Landing.js")));
 const AboutUs = Loadable(lazy(() => import("../pages/about/aboutUs.js")));
 const MyCart = Loadable(lazy(() => import("../pages/MyCart/Mycart.js")));
+const ProductDetails = Loadable(lazy(() => import("../pages/productDetails")));
 
 // AUTHENTICATION
 const Login = Loadable(lazy(() => import("../pages/auth/Login")));
@@ -57,5 +62,7 @@ const ResetPassword = Loadable(
   lazy(() => import("../pages/auth/ResetPassword"))
 );
 const NewPassword = Loadable(lazy(() => import("../pages/auth/NewPassword")));
-const ForgetPassword = Loadable(lazy(() => import("../pages/auth/ForgetPassword")));
+const ForgetPassword = Loadable(
+  lazy(() => import("../pages/auth/ForgetPassword"))
+);
 const VerifyCode = Loadable(lazy(() => import("../pages/auth/VerifyCode")));
