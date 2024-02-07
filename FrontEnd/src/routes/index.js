@@ -39,6 +39,10 @@ export default function Router() {
       children: [
         { path: PATH_PAGE.landingPage, exact: true, element: <Landing /> },
         {
+          path: PATH_PAGE.createProduct,
+          element: <CreateProduct />,
+        },
+        {
           path: PATH_PAGE.productDetails,
           element: <ProductDetails />,
         },
@@ -53,6 +57,7 @@ export default function Router() {
 const Landing = Loadable(lazy(() => import("../pages/Landing.js")));
 const AboutUs = Loadable(lazy(() => import("../pages/about/aboutUs.js")));
 const MyCart = Loadable(lazy(() => import("../pages/MyCart/Mycart.js")));
+const CreateProduct = Loadable(lazy(() => import("../pages/product/create")));
 const ProductDetails = Loadable(lazy(() => import("../pages/productDetails")));
 
 // AUTHENTICATION
