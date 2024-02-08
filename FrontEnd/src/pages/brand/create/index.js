@@ -1,4 +1,3 @@
-import { Link as RouterLink } from "react-router-dom";
 // @mui
 import { styled } from "@mui/material/styles";
 import {
@@ -9,11 +8,13 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
+// animation
+import Lottie from "react-lottie";
+import Glass from "../../../animations/brand/glassAnimation.json";
+import animationSetter from "../../../animations/animationSetter";
+
 // sections
-import {
-  CreateProductRightForm,
-  CreateProductLeftForm,
-} from "../../../sections/product/create";
+import { CreateBrandForm } from "../../../sections/brand/create";
 
 // ----------------------------------------------------------------------
 
@@ -30,7 +31,7 @@ const ContentStyle = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
-  padding: theme.spacing(12, 0),
+  marginTop: "-800px",
 }));
 
 // ----------------------------------------------------------------------
@@ -43,6 +44,13 @@ export default function CreateProduct() {
   return (
     <RootStyle>
       <Container>
+        <Lottie
+          options={animationSetter(Glass)}
+          width={"100%"}
+          height={"800px"}
+          style={{ marginTop: "-50px" }}
+          isClickToPauseDisabled
+        />
         <ContentStyle>
           {" "}
           <Box sx={{ display: "flex" }}>
@@ -53,22 +61,9 @@ export default function CreateProduct() {
             >
               Create
             </Typography>
-            <Typography variant="h4">&nbsp; Product</Typography>
+            <Typography variant="h4">&nbsp; Brand</Typography>
           </Box>
-          <CreateProductLeftForm />
-        </ContentStyle>
-      </Container>
-      <Container>
-        <ContentStyle>
-          <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
-            <Box sx={{ flexGrow: 1 }}>
-              <Typography sx={{ color: "text.secondary" }}>
-                Please Select & Fill The Blanks
-              </Typography>
-            </Box>
-          </Box>
-
-          <CreateProductRightForm />
+          <CreateBrandForm />
         </ContentStyle>
       </Container>
     </RootStyle>
