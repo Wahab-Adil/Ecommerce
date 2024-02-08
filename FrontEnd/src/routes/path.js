@@ -25,4 +25,5 @@ export const PATH_PAGE = {
 export const ADMIN_PAGES = {
   createProduct: path(ADMIN_ROOT, "/create-product"),
   createBrand: path(ADMIN_ROOT, "/create-brand"),
+  createColor: path(ADMIN_ROOT, "/create-color"),
 };

@@ -47,6 +47,10 @@ export default function Router() {
           element: <CreateBrand />,
         },
         {
+          path: ADMIN_PAGES.createColor,
+          element: <CreateColor />,
+        },
+        {
           path: PATH_PAGE.productDetails,
           element: <ProductDetails />,
         },
@@ -59,6 +63,7 @@ export default function Router() {
 // admin routes
 const CreateProduct = Loadable(lazy(() => import("../pages/product/create")));
 const CreateBrand = Loadable(lazy(() => import("../pages/brand/create")));
+const CreateColor = Loadable(lazy(() => import("../pages/color/create")));
 
 // MAIN
 const Landing = Loadable(lazy(() => import("../pages/Landing.js")));
