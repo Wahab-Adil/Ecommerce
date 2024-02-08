@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { useRoutes } from "react-router-dom";
 // path
-import { PATH_PAGE, PATH_AUTH } from "./path";
+import { PATH_PAGE, PATH_AUTH, ADMIN_PAGES } from "./path";
 
 const Loadable = (Component) => (props) => {
   return (
@@ -39,6 +39,18 @@ export default function Router() {
       children: [
         { path: PATH_PAGE.landingPage, exact: true, element: <Landing /> },
         {
+          path: ADMIN_PAGES.createProduct,
+          element: <CreateProduct />,
+        },
+        {
+          path: ADMIN_PAGES.createBrand,
+          element: <CreateBrand />,
+        },
+        {
+          path: ADMIN_PAGES.createColor,
+          element: <CreateColor />,
+        },
+        {
           path: PATH_PAGE.productDetails,
           element: <ProductDetails />,
         },
@@ -48,6 +60,10 @@ export default function Router() {
     },
   ]);
 }
+// admin routes
+const CreateProduct = Loadable(lazy(() => import("../pages/product/create")));
+const CreateBrand = Loadable(lazy(() => import("../pages/brand/create")));
+const CreateColor = Loadable(lazy(() => import("../pages/color/create")));
 
 // MAIN
 const Landing = Loadable(lazy(() => import("../pages/Landing.js")));

@@ -129,7 +129,7 @@ const productDetails = () => {
                 Brand
               </Typography>
               <Typography variant="body1" color="primary.light">
-                Samsung
+                Z-masters
               </Typography>
             </Box>
             <Box>
@@ -137,7 +137,7 @@ const productDetails = () => {
                 Category
               </Typography>
               <Typography variant="body1" color="primary.light">
-                Chair
+                Sofa
               </Typography>
             </Box>
           </Box>
@@ -245,8 +245,8 @@ const productDetails = () => {
                 </Box>
                 <Box>
                   <Button
-                    id="demo-positioned-button"
-                    aria-controls={open ? "demo-positioned-menu" : undefined}
+                    id="qty-button"
+                    aria-controls={open ? "qty-menu" : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
                     onClick={handleClick}
@@ -254,12 +254,12 @@ const productDetails = () => {
                     <KeyboardArrowDownIcon />
                   </Button>
                   <Menu
-                    id="basic-menu"
+                    id="qty-menu"
                     anchorEl={anchorEl}
                     open={open}
                     onClose={handleClose}
                     MenuListProps={{
-                      "aria-labelledby": "basic-button",
+                      "aria-labelledby": "qty-button",
                     }}
                   >
                     <MenuItem onClick={handleClose}>Profile</MenuItem>
