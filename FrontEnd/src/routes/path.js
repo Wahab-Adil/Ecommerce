@@ -22,7 +22,10 @@ export const PATH_PAGE = {
   MyCart: path(PATH_ROOT, "my-cart"),
 };
 
+// admin
+
 export const ADMIN_PAGES = {
+  Admin_Root: path(ADMIN_ROOT, "/"),
   createProduct: path(ADMIN_ROOT, "/create-product"),
   createBrand: path(ADMIN_ROOT, "/create-brand"),
   createColor: path(ADMIN_ROOT, "/create-color"),
