@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { useRoutes } from "react-router-dom";
+import { useRoutes, Outlet } from "react-router-dom";
 // path
 import { PATH_PAGE, PATH_AUTH, ADMIN_PAGES } from "./path";
 
@@ -13,31 +13,16 @@ const Loadable = (Component) => (props) => {
 
 export default function Router() {
   return useRoutes([
-    // Auth routes
     {
-      path: "auth",
+      path: "/admin",
+      element: (
+        <DashBoard>
+          <Suspense>
+            <Outlet />
+          </Suspense>
+        </DashBoard>
+      ),
       children: [
-        {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <Register />,
-        },
-        //   { path: "login-unprotected", element: <Login /> },
-        // { path: "register-unprotected", element: <Register /> },
-        { path: "reset-password", element: <ResetPassword /> },
-        { path: "new-password", element: <NewPassword /> },
-        { path: "forget-password", element: <ForgetPassword /> },
-        { path: "verify", element: <VerifyCode /> },
-      ],
-    },
-    // main pages before login
-    {
-      path: "/",
-      children: [
-        { path: PATH_PAGE.landingPage, exact: true, element: <Landing /> },
         {
           path: ADMIN_PAGES.createProduct,
           element: <CreateProduct />,
@@ -50,6 +35,34 @@ export default function Router() {
           path: ADMIN_PAGES.createColor,
           element: <CreateColor />,
         },
+      ],
+    },
+
+    // Auth routes
+    {
+      path: "auth",
+      children: [
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+
+        { path: "reset-password", element: <ResetPassword /> },
+        { path: "new-password", element: <NewPassword /> },
+        { path: "forget-password", element: <ForgetPassword /> },
+        { path: "verify", element: <VerifyCode /> },
+      ],
+    },
+    // main pages before login
+    {
+      path: "/",
+      children: [
+        { path: PATH_PAGE.landingPage, exact: true, element: <Landing /> },
+
         {
           path: PATH_PAGE.productDetails,
           element: <ProductDetails />,
@@ -61,6 +74,7 @@ export default function Router() {
   ]);
 }
 // admin routes
+const DashBoard = Loadable(lazy(() => import("../layouts/dashboard")));
 const CreateProduct = Loadable(lazy(() => import("../pages/product/create")));
 const CreateBrand = Loadable(lazy(() => import("../pages/brand/create")));
 const CreateColor = Loadable(lazy(() => import("../pages/color/create")));
