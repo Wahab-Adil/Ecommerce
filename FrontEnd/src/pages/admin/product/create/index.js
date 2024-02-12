@@ -13,7 +13,7 @@ import {
 import {
   CreateProductRightForm,
   CreateProductLeftForm,
-} from "../../../sections/product/create";
+} from "../../../../sections/admin/product/create";
 
 // ----------------------------------------------------------------------
 

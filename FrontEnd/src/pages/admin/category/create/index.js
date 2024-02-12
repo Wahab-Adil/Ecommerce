@@ -1,3 +1,4 @@
+import { Link as RouterLink } from "react-router-dom";
 // @mui
 import { styled } from "@mui/material/styles";
 import {
@@ -8,13 +9,8 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-// animation
-import Lottie from "react-lottie";
-import Glass from "../../../animations/old/new/buble.json";
-import animationSetter from "../../../animations/animationSetter";
-
 // sections
-import { CreateBrandForm } from "../../../sections/color/create";
+import { CreateCategoryForm } from "../../../../sections/admin/category/create";
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +27,7 @@ const ContentStyle = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   flexDirection: "column",
+  padding: theme.spacing(12, 0),
 }));
 
 // ----------------------------------------------------------------------
@@ -43,13 +40,6 @@ export default function CreateProduct() {
   return (
     <RootStyle>
       <Container>
-        <Lottie
-          options={animationSetter(Glass)}
-          width={"100%"}
-          height={"400px"}
-          style={{ position: "absolute", top: 1 }}
-          isClickToPauseDisabled
-        />
         <ContentStyle>
           {" "}
           <Box sx={{ display: "flex" }}>
@@ -58,11 +48,11 @@ export default function CreateProduct() {
               variant="h4"
               gutterBottom
             >
-              Choose
+              Create
             </Typography>
-            <Typography variant="h4">&nbsp; Color</Typography>
+            <Typography variant="h4">&nbsp; Category</Typography>
           </Box>
-          <CreateBrandForm />
+          <CreateCategoryForm />
         </ContentStyle>
       </Container>
     </RootStyle>
