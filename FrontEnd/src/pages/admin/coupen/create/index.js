@@ -10,10 +10,7 @@ import {
 } from "@mui/material";
 
 // sections
-import {
-  CreateProductRightForm,
-  CreateProductLeftForm,
-} from "../../../../sections/admin/product/create";
+import { CreateCoupenForm } from "../../../../sections/admin/coupen/create";
 
 // ----------------------------------------------------------------------
 
@@ -35,11 +32,8 @@ const ContentStyle = styled("div")(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function CreateProduct() {
+export default function CreateCoupon() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
-  const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
-
   return (
     <RootStyle>
       <Container>
@@ -53,22 +47,9 @@ export default function CreateProduct() {
             >
               Create
             </Typography>
-            <Typography variant="h4">&nbsp; Product</Typography>
+            <Typography variant="h4">&nbsp; Coupon</Typography>
           </Box>
-          <CreateProductLeftForm />
-        </ContentStyle>
-      </Container>
-      <Container>
-        <ContentStyle>
-          <Box sx={{ mb: 5, display: "flex", alignItems: "center" }}>
-            <Box sx={{ flexGrow: 1 }}>
-              <Typography sx={{ color: "text.secondary" }}>
-                Please Select & Fill The Blanks
-              </Typography>
-            </Box>
-          </Box>
-
-          <CreateProductRightForm />
+          <CreateCoupenForm />
         </ContentStyle>
       </Container>
     </RootStyle>

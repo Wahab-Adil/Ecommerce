@@ -30,4 +30,5 @@ export const ADMIN_PAGES = {
   createBrand: path(ADMIN_ROOT, "/create-brand"),
   createColor: path(ADMIN_ROOT, "/create-color"),
   createCategory: path(ADMIN_ROOT, "/create-category"),
+  createCoupen: path(ADMIN_ROOT, "/create-coupen"),
 };

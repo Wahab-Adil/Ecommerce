@@ -39,6 +39,10 @@ export default function Router() {
           path: ADMIN_PAGES.createCategory,
           element: <CreateCategory />,
         },
+        {
+          path: ADMIN_PAGES.createCoupen,
+          element: <CreateCoupen />,
+        },
       ],
     },
 
@@ -88,6 +92,9 @@ const CreateColor = Loadable(
 );
 const CreateCategory = Loadable(
   lazy(() => import("../pages/admin/category/create/index.js"))
+);
+const CreateCoupen = Loadable(
+  lazy(() => import("../pages/admin/coupen/create/index.js"))
 );
 
 // MAIN
