@@ -35,6 +35,14 @@ export default function Router() {
           path: ADMIN_PAGES.createColor,
           element: <CreateColor />,
         },
+        {
+          path: ADMIN_PAGES.createCategory,
+          element: <CreateCategory />,
+        },
+        {
+          path: ADMIN_PAGES.createCoupen,
+          element: <CreateCoupen />,
+        },
       ],
     },
 
@@ -75,9 +83,19 @@ export default function Router() {
 }
 // admin routes
 const DashBoard = Loadable(lazy(() => import("../layouts/dashboard")));
-const CreateProduct = Loadable(lazy(() => import("../pages/product/create")));
-const CreateBrand = Loadable(lazy(() => import("../pages/brand/create")));
-const CreateColor = Loadable(lazy(() => import("../pages/color/create")));
+const CreateProduct = Loadable(
+  lazy(() => import("../pages/admin/product/create/index.js"))
+);
+const CreateBrand = Loadable(lazy(() => import("../pages/admin/brand/create")));
+const CreateColor = Loadable(
+  lazy(() => import("../pages/admin/color/create/index.js"))
+);
+const CreateCategory = Loadable(
+  lazy(() => import("../pages/admin/category/create/index.js"))
+);
+const CreateCoupen = Loadable(
+  lazy(() => import("../pages/admin/coupen/create/index.js"))
+);
 
 // MAIN
 const Landing = Loadable(lazy(() => import("../pages/Landing.js")));
