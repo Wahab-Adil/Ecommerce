@@ -13,6 +13,11 @@ import { account } from "../../../_mock/account";
 
 import wahab from "../../../assets/team/wahab.jpeg";
 
+//animation
+import Lottie from "react-lottie";
+import animationSetter from "../../../animations/animationSetter";
+import AvatarAnimation from "../../../animations/old/new/avatar/Animated Avatar (1).json";
+
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
@@ -57,17 +62,31 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar
-          src={wahab}
-          alt={account.displayName}
-          sx={{
-            width: 36,
-            height: 36,
-            border: (theme) => `solid 2px ${theme.palette.background.default}`,
-          }}
-        >
-          {account.displayName.charAt(0).toUpperCase()}
-        </Avatar>
+        <Box>
+          <div style={{ position: "relative" }}>
+            <Avatar
+              sx={{
+                width: "75px",
+                height: "75px",
+                background: "none",
+                border: (theme) =>
+                  `solid 2px ${theme.palette.background.default}`,
+              }}
+            >
+              <Lottie options={animationSetter(AvatarAnimation)} />
+              <Avatar
+                sx={{
+                  position: "absolute",
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "40px",
+                  height: "40px",
+                }}
+                src={wahab}
+              />
+            </Avatar>
+          </div>
+        </Box>
       </IconButton>
 
       <Popover

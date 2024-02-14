@@ -24,6 +24,11 @@ import { NAV } from "./config-layout";
 import navConfig from "./config-navigation";
 import wahab from "../../assets/team/wahab.jpeg";
 
+//animation
+import Lottie from "react-lottie";
+import animationSetter from "../../animations/animationSetter";
+import AvatarAnimation from "../../animations/old/new/avatar/Animated Avatar (1).json";
+
 // ----------------------------------------------------------------------
 
 console.log("serc", account.photoURL);
@@ -52,9 +57,31 @@ export default function Nav({ openNav, onCloseNav }) {
         bgcolor: (theme) => alpha(theme.palette.grey[500], 0.12),
       }}
     >
-      <Avatar src={wahab} alt="photoURL" />
+      <Box>
+        <div style={{ position: "relative" }}>
+          <Avatar
+            sx={{
+              width: "80px",
+              height: "80px",
+              background: "none",
+            }}
+          >
+            <Lottie options={animationSetter(AvatarAnimation)} />
+            <Avatar
+              sx={{
+                position: "absolute",
+                display: "flex",
+                justifyContent: "center",
+                width: "45px",
+                height: "45px",
+              }}
+              src={wahab}
+            />
+          </Avatar>
+        </div>
+      </Box>
 
-      <Box sx={{ ml: 2 }}>
+      <Box sx={{ ml: 1 }}>
         <Typography variant="subtitle2">{account.displayName}</Typography>
 
         <Typography variant="body2" sx={{ color: "text.secondary" }}>
