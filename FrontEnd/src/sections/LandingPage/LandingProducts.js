@@ -8,6 +8,7 @@ import {
   CardContent,
   Box,
   useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { Products } from "../../_mock";
 
@@ -15,9 +16,11 @@ import { Products } from "../../_mock";
 
 const useStyles = makeStyles((theme) => ({
   pageContainer: {
-    marginTop: "10rem",
     alignItems: "center",
     minHeight: "100vh",
+    [theme.breakpoints.down("sm")]: {
+      flex: 0.5,
+    },
   },
   root: {
     flexGrow: 1,
@@ -67,12 +70,14 @@ const useStyles = makeStyles((theme) => ({
 const LandingProducts = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <div className={classes.pageContainer}>
       <Typography
         color="primary.main"
-        variant="h4"
-        component="h2"
+        variant="h5"
+        component="h5"
         align="center"
       >
         LATEST PRODUCTS
@@ -80,9 +85,9 @@ const LandingProducts = () => {
       <div className={classes.root}>
         <Box style={{ marginTop: "20px" }} />
 
-        <Grid container spacing={2}>
+        <Grid container justifyContent={"center"} spacing={2}>
           {Products.map((product) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
+            <Grid item xs={6} sm={6} md={3.5} lg={3} key={product.id}>
               <Card className={classes.card}>
                 <CardContent className={classes.cardContent}>
                   <Typography
