@@ -4,7 +4,7 @@ import { TextField, Button, AccordionDetails } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   formContainer: {
-    width: "100%",
+    Width: "100%",
     display: "flex",
     justifyContent: "center",
   },
@@ -16,9 +16,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     border: "1px solid #ccc",
     borderRadius: theme.spacing(1),
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "100%",
+    },
     maxWidth: 400,
   },
   submitButton: {
+    width: "100%",
     marginTop: theme.spacing(2),
   },
 }));
@@ -47,6 +51,7 @@ const FaqsForm = () => {
           label="Email"
           type="email"
           value={email}
+          fullWidth
           onChange={(event) => setEmail(event.target.value)}
           required
         />
@@ -54,6 +59,7 @@ const FaqsForm = () => {
         <TextField
           label="Message"
           multiline
+          fullWidth
           rows={4}
           value={message}
           onChange={(event) => setMessage(event.target.value)}

@@ -10,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     minHeight: "100vh",
     backgroundColor: theme.palette.background.paper,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      width: "100vw",
+      border: "2px solid blue",
+    },
   },
   componentContainer: {
     flex: 1,
@@ -17,7 +22,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     // border: "1px solid #ccc",
     borderRadius: theme.spacing(1),
-    marginLeft: theme.spacing(2), // Add left margin for spacing
+    // marginLeft: theme.spacing(2), // Add left margin for spacing
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "100%",
+    },
   },
 }));
 
