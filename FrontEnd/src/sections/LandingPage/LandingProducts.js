@@ -70,8 +70,7 @@ const useStyles = makeStyles((theme) => ({
 const LandingProducts = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMdScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isMatchMobile = useMediaQuery(theme.breakpoints.between("10", "450"));
   return (
     <div className={classes.pageContainer}>
       <Typography
@@ -87,7 +86,14 @@ const LandingProducts = () => {
 
         <Grid container justifyContent={"center"} spacing={2}>
           {Products.map((product) => (
-            <Grid item xs={6} sm={6} md={3.5} lg={3} key={product.id}>
+            <Grid
+              item
+              xs={isMatchMobile ? 12 : 6}
+              sm={6}
+              md={3.5}
+              lg={3}
+              key={product.id}
+            >
               <Card className={classes.card}>
                 <CardContent className={classes.cardContent}>
                   <Typography
@@ -106,7 +112,9 @@ const LandingProducts = () => {
                   </Typography>
                 </CardContent>
                 <img
-                  style={{ padding: "10px" }}
+                  style={{
+                    padding: "10px",
+                  }}
                   src={product.picture}
                   alt={product.name}
                   className={classes.productImage}
