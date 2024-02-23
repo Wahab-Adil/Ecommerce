@@ -334,7 +334,7 @@ export default function RegisterForm() {
                 borderRadius: 1,
               }}
             >
-              Color
+              Colors
             </Box>
 
             <Button
