@@ -83,7 +83,7 @@ const LandingHero = () => {
                   <Typography
                     sx={{
                       color: theme.palette.primary.main,
-                      fontSize: "2.5rem",
+                      fontSize: "2.3rem",
                     }}
                   >
                     &nbsp; &nbsp; &nbsp; Welcome
