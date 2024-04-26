@@ -77,6 +77,7 @@ export default function Router() {
         },
         { path: PATH_PAGE.aboutUs, element: <AboutUs /> },
         { path: PATH_PAGE.MyCart, element: <MyCart /> },
+        { path: PATH_PAGE.SearchResult, element: <SearchResult /> },
       ],
     },
   ]);
@@ -102,6 +103,7 @@ const Landing = Loadable(lazy(() => import("../pages/Landing.js")));
 const AboutUs = Loadable(lazy(() => import("../pages/about/aboutUs.js")));
 const MyCart = Loadable(lazy(() => import("../pages/MyCart/Mycart.js")));
 const ProductDetails = Loadable(lazy(() => import("../pages/productDetails")));
+const SearchResult = Loadable(lazy(() => import("../pages/searchResult")));
 
 // AUTHENTICATION
 const Login = Loadable(lazy(() => import("../pages/auth/Login")));
