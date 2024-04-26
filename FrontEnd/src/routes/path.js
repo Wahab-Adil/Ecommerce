@@ -20,6 +20,7 @@ export const PATH_PAGE = {
   productDetails: path(PATH_ROOT, "/product-detials"),
   aboutUs: path(PATH_ROOT, "about"),
   MyCart: path(PATH_ROOT, "my-cart"),
+  SearchResult: path(PATH_ROOT, "/search-result"),
 };
 
 // admin

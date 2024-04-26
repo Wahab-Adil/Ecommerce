@@ -110,7 +110,9 @@ const LandingHero = () => {
                   <Typography
                     sx={{
                       color: theme.palette.primary.main,
+
                       fontSize: isMdScreen ? "1.5rem" : "2.5rem",
+
                     }}
                   >
                     &nbsp; &nbsp; &nbsp; Welcome
