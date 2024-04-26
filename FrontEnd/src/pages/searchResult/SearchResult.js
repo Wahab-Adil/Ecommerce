@@ -8,6 +8,8 @@ import {
   Rating,
   Box,
   useTheme,
+  Autocomplete,
+  TextField,
 } from "@mui/material";
 
 //images
@@ -15,6 +17,10 @@ import filter1 from "../../assets/landing/filter1.jpeg";
 import filter2 from "../../assets/landing/filter2.jpeg";
 import filter3 from "../../assets/landing/filter3.jpeg";
 import filter4 from "../../assets/landing/filter4.jpeg";
+import filter5 from "../../assets/landing/image5.png";
+import filter6 from "../../assets/landing/image6.jpeg";
+import filter7 from "../../assets/landing/image7.jpeg";
+import filter8 from "../../assets/landing/image8.jpeg";
 // hooks
 import { useResponsive } from "../../hooks/use-responsive";
 import { Filter4TwoTone } from "@mui/icons-material";
@@ -51,6 +57,40 @@ const mockSearchResults = [
     rating: 4.5,
     price: "$59.99",
   },
+  {
+    title: "Hero-Green",
+    Description: "Huawei",
+    instructor: "Helmmandi",
+    image: filter5,
+    rating: 4.5,
+    price: "$59.99",
+  },
+  {
+    title: "Hero-Green",
+    Description: "Huawei",
+    instructor: "Helmmandi",
+    image: filter6,
+    rating: 4.5,
+    price: "$59.99",
+  },
+  {
+    title: "Hero-Green",
+    Description: "Huawei",
+    instructor: "Helmmandi",
+    image: filter7,
+    rating: 4.5,
+    price: "$59.99",
+  },
+];
+
+const top100Films = [
+  { title: "The Shawshank Redemption", year: 1994 },
+  { title: "The Godfather", year: 1972 },
+  { title: "The Godfather: Part II", year: 1974 },
+  { title: "The Dark Knight", year: 2008 },
+  { title: "12 Angry Men", year: 1957 },
+  { title: "Schindler's List", year: 1993 },
+  { title: "Pulp Fiction", year: 1994 },
 ];
 
 const SearchResultPage = () => {
@@ -65,11 +105,31 @@ const SearchResultPage = () => {
         flexDirection: "column",
         alignItems: "center",
         maxWidth: "100%",
+        mt: 1,
       }}
     >
+      <Autocomplete
+        freeSolo
+        fullWidth
+        sx={{ margin: "auto" }}
+        id="free-solo-2-demo"
+        disableClearable
+        options={top100Films.map((option) => option.title)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search"
+            InputProps={{
+              ...params.InputProps,
+              type: "search",
+            }}
+          />
+        )}
+      />
       <Typography variant="h4" gutterBottom>
         Search Results
       </Typography>
+
       <Box
         sx={{
           display: "flex",
