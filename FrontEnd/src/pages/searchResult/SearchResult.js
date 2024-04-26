@@ -119,7 +119,6 @@ const SearchResultPage = () => {
                   </Typography>
                   <Typography
                     gutterBottom
-                    sx={{ width: "80%" }}
                     variant="subtitle1"
                     sx={{ color: (theme) => theme.palette.text.secondary }}
                   >
